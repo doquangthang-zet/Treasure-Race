@@ -10,6 +10,9 @@ import SwiftUI
 // MARK: - GAME UI View
 struct GameView: View {
     // MARK: - PROPERTIES
+    @EnvironmentObject var game: GameService
+    @Environment(\.dismiss) var dismiss
+    
     @State private var icons = ["start-button","none","bomb","none","heart","none","none","none","none","none","portal","none","none","portal","none","none","shield","none","none","treasure"]
     
     @State private var blocks = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]
@@ -41,8 +44,17 @@ struct GameView: View {
     //MARK: - PLAYER MOVING
     func move(position: Int, steps: Int) {
         player2Position += steps
-        icons[player2Position] = player2Avatar
-        
+        checkDestination(p: player2Position)
+    }
+    
+    //MARK: - CHECK POSSIBLE MOVE
+    func checkDestination(p: Int) {
+        if(icons[p] == "none") {
+            var temp = "none"
+            icons[player2Position] = player2Avatar
+        } else {
+            icons[player2Position] = player2Avatar
+        }
     }
     
     var body: some View {
@@ -54,6 +66,43 @@ struct GameView: View {
             
             //MARK: - VSTACK
             VStack{
+                //MARK: - PLAYER TURN
+                VStack {
+                    if[game.player1.isCurrent, game.player2.isCurrent].allSatisfy({ $0 == false }) {
+                        Text("Select a player to start")
+                    }
+                    HStack{
+                        Button(game.player1.name) {
+                            game.player1.isCurrent = true
+                        }
+                        .buttonStyle(PlayerBtnStyle(isCurrent: game.player1.isCurrent))
+                        
+                        Button(game.player2.name) {
+                            game.player2.isCurrent = true
+                        }
+                        .buttonStyle(PlayerBtnStyle(isCurrent: game.player2.isCurrent))
+                    }
+                    .disabled(game.gameStart)
+//                    VStack{
+//                        HStack{
+//                            ForEach(0...2, id: \.self) { index in
+//                                SquareView(index: index)
+//                            }
+//                        }
+//                        HStack{
+//                            ForEach(3...5, id: \.self) { index in
+//                                SquareView(index: index)
+//                            }
+//                        }
+//                        HStack{
+//                            ForEach(6...8, id: \.self) { index in
+//                                SquareView(index: index)
+//                            }
+//                        }
+//                    }
+//                    Spacer()
+                }
+                
                 //MARK: - PLAYER 1 BOX
                 HStack{
                     Button {
@@ -152,11 +201,32 @@ struct GameView: View {
                 }
             }//Close vstack
         }//Close zstack
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button("End Game") {
+                    dismiss()
+                }
+                .buttonStyle(.bordered)
+            }
+        }
     }
 }
 
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
         GameView()
+            .environmentObject(GameService())
+    }
+}
+
+struct PlayerBtnStyle: ButtonStyle {
+    let isCurrent: Bool
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding(8)
+            .background(RoundedRectangle(cornerRadius: 10)
+                .fill(isCurrent ? Color.green : Color.gray)
+            )
+            .foregroundColor(.white)
     }
 }

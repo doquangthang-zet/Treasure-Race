@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct Treasure_RaceApp: App {
+    @StateObject var game = GameService()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(game)
         }
     }
 }
