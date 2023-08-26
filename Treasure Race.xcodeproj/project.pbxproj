@@ -11,6 +11,14 @@
 		AE9FAE542A9873C100B0CCA2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9FAE532A9873C100B0CCA2 /* ContentView.swift */; };
 		AE9FAE562A9873C300B0CCA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE9FAE552A9873C300B0CCA2 /* Assets.xcassets */; };
 		AE9FAE592A9873C300B0CCA2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE9FAE582A9873C300B0CCA2 /* Preview Assets.xcassets */; };
+		AE9FAE602A98768000B0CCA2 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9FAE5F2A98768000B0CCA2 /* MenuView.swift */; };
+		AE9FAE652A9876D800B0CCA2 /* PlaySound.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9FAE642A9876D800B0CCA2 /* PlaySound.swift */; };
+		AE9FAE672A98777600B0CCA2 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9FAE662A98777600B0CCA2 /* GameView.swift */; };
+		AE9FAE692A987D4000B0CCA2 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9FAE682A987D4000B0CCA2 /* LogoView.swift */; };
+		AE9FAE6B2A987E4E00B0CCA2 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9FAE6A2A987E4E00B0CCA2 /* Modifiers.swift */; };
+		AE9FAE6E2A98804100B0CCA2 /* LilitaOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE9FAE6D2A98804100B0CCA2 /* LilitaOne-Regular.ttf */; };
+		AE9FAE712A9886B300B0CCA2 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = AE9FAE702A9886B200B0CCA2 /* OFL.txt */; };
+		AE9FAE732A98895C00B0CCA2 /* BlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9FAE722A98895C00B0CCA2 /* BlockView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +27,15 @@
 		AE9FAE532A9873C100B0CCA2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AE9FAE552A9873C300B0CCA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AE9FAE582A9873C300B0CCA2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		AE9FAE5F2A98768000B0CCA2 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		AE9FAE642A9876D800B0CCA2 /* PlaySound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySound.swift; sourceTree = "<group>"; };
+		AE9FAE662A98777600B0CCA2 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		AE9FAE682A987D4000B0CCA2 /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
+		AE9FAE6A2A987E4E00B0CCA2 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
+		AE9FAE6D2A98804100B0CCA2 /* LilitaOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LilitaOne-Regular.ttf"; sourceTree = "<group>"; };
+		AE9FAE6F2A9880EB00B0CCA2 /* Treasure-Race-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Treasure-Race-Info.plist"; sourceTree = SOURCE_ROOT; };
+		AE9FAE702A9886B200B0CCA2 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		AE9FAE722A98895C00B0CCA2 /* BlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +68,12 @@
 		AE9FAE502A9873C100B0CCA2 /* Treasure Race */ = {
 			isa = PBXGroup;
 			children = (
+				AE9FAE6F2A9880EB00B0CCA2 /* Treasure-Race-Info.plist */,
 				AE9FAE512A9873C100B0CCA2 /* Treasure_RaceApp.swift */,
-				AE9FAE532A9873C100B0CCA2 /* ContentView.swift */,
+				AE9FAE6C2A98802500B0CCA2 /* Fonts */,
+				AE9FAE632A9876AD00B0CCA2 /* Sounds */,
+				AE9FAE622A98769A00B0CCA2 /* Helpers */,
+				AE9FAE612A98768900B0CCA2 /* Views */,
 				AE9FAE552A9873C300B0CCA2 /* Assets.xcassets */,
 				AE9FAE572A9873C300B0CCA2 /* Preview Content */,
 			);
@@ -65,6 +86,43 @@
 				AE9FAE582A9873C300B0CCA2 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		AE9FAE612A98768900B0CCA2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AE9FAE532A9873C100B0CCA2 /* ContentView.swift */,
+				AE9FAE5F2A98768000B0CCA2 /* MenuView.swift */,
+				AE9FAE662A98777600B0CCA2 /* GameView.swift */,
+				AE9FAE682A987D4000B0CCA2 /* LogoView.swift */,
+				AE9FAE722A98895C00B0CCA2 /* BlockView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AE9FAE622A98769A00B0CCA2 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				AE9FAE642A9876D800B0CCA2 /* PlaySound.swift */,
+				AE9FAE6A2A987E4E00B0CCA2 /* Modifiers.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		AE9FAE632A9876AD00B0CCA2 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		AE9FAE6C2A98802500B0CCA2 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				AE9FAE702A9886B200B0CCA2 /* OFL.txt */,
+				AE9FAE6D2A98804100B0CCA2 /* LilitaOne-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,6 +184,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE9FAE592A9873C300B0CCA2 /* Preview Assets.xcassets in Resources */,
+				AE9FAE6E2A98804100B0CCA2 /* LilitaOne-Regular.ttf in Resources */,
+				AE9FAE712A9886B300B0CCA2 /* OFL.txt in Resources */,
 				AE9FAE562A9873C300B0CCA2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,8 +197,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE9FAE732A98895C00B0CCA2 /* BlockView.swift in Sources */,
 				AE9FAE542A9873C100B0CCA2 /* ContentView.swift in Sources */,
+				AE9FAE692A987D4000B0CCA2 /* LogoView.swift in Sources */,
+				AE9FAE6B2A987E4E00B0CCA2 /* Modifiers.swift in Sources */,
+				AE9FAE652A9876D800B0CCA2 /* PlaySound.swift in Sources */,
+				AE9FAE602A98768000B0CCA2 /* MenuView.swift in Sources */,
 				AE9FAE522A9873C100B0CCA2 /* Treasure_RaceApp.swift in Sources */,
+				AE9FAE672A98777600B0CCA2 /* GameView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +335,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Treasure Race/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Treasure-Race-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -297,6 +364,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Treasure Race/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Treasure-Race-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
