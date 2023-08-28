@@ -14,6 +14,13 @@ struct ShadowModifier: ViewModifier{
     }
 }
 
+struct LightShadowModifier: ViewModifier{
+    func body(content: Content) -> some View {
+        content
+            .shadow(color:Color("Color-purple"), radius: 7)
+    }
+}
+
 struct AvatarImageModifier: ViewModifier{
     func body(content: Content) -> some View {
         content
@@ -31,4 +38,60 @@ struct BlockModifier: ViewModifier{
             .modifier(ShadowModifier())
     }
 }
-    
+ 
+struct ButtonMenuModifier: ViewModifier{
+    func body(content: Content) -> some View {
+        content
+            .font(.custom("LilitaOne", size: 30))
+            .foregroundColor(Color("Color-purple"))
+            .background(
+                Capsule()
+                    .fill(LinearGradient(gradient: Gradient(colors: [Color("Color-red"), Color("Color-orange-light")]), startPoint: .bottom, endPoint: .top))
+                    .frame(width: 250, height: 60, alignment: .center)
+                
+                    
+            )
+            .overlay(
+                Capsule()
+                    .stroke(Color("Color-light-yellow"), lineWidth: 4)
+                    .frame(width: 250, height: 60, alignment: .center)
+            )
+            .padding(30)
+    }
+}
+
+struct ScoreModifier: ViewModifier{
+    func body(content: Content) -> some View {
+        content
+            .font(.custom("LilitaOne", size: 20))
+            .foregroundColor(Color("Color-purple"))
+            .background(
+                Capsule()
+                    .fill(LinearGradient(gradient: Gradient(colors: [Color("Color-red"), Color("Color-orange-light")]), startPoint: .bottom, endPoint: .top))
+                    .frame(width: 150, height: 35, alignment: .center)
+            )
+            .overlay(
+                Capsule()
+                    .stroke(Color("Color-light-yellow"), lineWidth: 4)
+                    .frame(width: 150, height: 35, alignment: .center)
+            )
+    }
+}
+
+struct LevelButtonModifier: ViewModifier{
+    func body(content: Content) -> some View {
+        content
+            .font(.custom("LilitaOne", size: 20))
+            .foregroundColor(Color("Color-purple"))
+            .background(
+                Capsule()
+                    .fill(LinearGradient(gradient: Gradient(colors: [Color("Color-red"), Color("Color-orange-light")]), startPoint: .bottom, endPoint: .top))
+                    .frame(width: 90, height: 35, alignment: .center)
+            )
+            .overlay(
+                Capsule()
+                    .stroke(Color("Color-light-yellow"), lineWidth: 4)
+                    .frame(width: 100, height: 35, alignment: .center)
+            )
+    }
+}

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var game: GameService
     var body: some View {
         MenuView()
     }
@@ -15,6 +16,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MenuView()
+            .environmentObject(GameService())
     }
 }

@@ -13,60 +13,19 @@ struct GameView: View {
     @EnvironmentObject var game: GameService
     @Environment(\.dismiss) var dismiss
     
-    @State private var icons = ["start-button","none","bomb","none","heart","none","none","none","none","none","portal","none","none","portal","none","none","shield","none","none","treasure"]
-    
-    @State private var blocks = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]
-    
-    @State private var player1Avatar = "pirate"
-    @State private var player2Avatar = "knight"
-    
-    @State private var diceResult1 = 1
-    @State private var diceResult2 = 1
-    
-    @State private var player1Position = 0
-    @State private var player2Position = 0
-    
-    @State private var player1Turn = false
-    @State private var player2Turn = true
-    
-    // MARK: - FUNCTIONS (GAME LOGICS)
-    //MARK: - ROLL DICE LOGIC
-    func rollDice1() {
-        diceResult1 = Int.random(in: 1...6)
-    }
-    func rollDice2() {
-        diceResult2 = Int.random(in: 1...6)
-    }
-    
-    //MARK: - CHECK POSITIONS
-    
-    
-    //MARK: - PLAYER MOVING
-    func move(position: Int, steps: Int) {
-        player2Position += steps
-        checkDestination(p: player2Position)
-    }
-    
-    //MARK: - CHECK POSSIBLE MOVE
-    func checkDestination(p: Int) {
-        if(icons[p] == "none") {
-            var temp = "none"
-            icons[player2Position] = player2Avatar
-        } else {
-            icons[player2Position] = player2Avatar
-        }
-    }
+    @FocusState private var focus: Bool
     
     var body: some View {
         //MARK: BODY
         ZStack{
             // MARK: - BACKGROUND
-            LinearGradient(gradient: Gradient(colors: [Color("Color-blue"), Color("Color-purple")]), startPoint: .top, endPoint: .bottom)
+            LinearGradient(gradient: Gradient(colors: [Color("Color-orange-light"), Color("Color-light-yellow")]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all)
+            
             
             //MARK: - VSTACK
             VStack{
-                //MARK: - PLAYER TURN
+                //MARK: - PLAYER TURN CHOOSING
                 VStack {
                     if[game.player1.isCurrent, game.player2.isCurrent].allSatisfy({ $0 == false }) {
                         Text("Select a player to start")
@@ -79,136 +38,377 @@ struct GameView: View {
                         
                         Button(game.player2.name) {
                             game.player2.isCurrent = true
+                            if game.gameType == .bot {
+                                Task {
+                                    await game.iphoneMove()
+                                }
+                            }
                         }
                         .buttonStyle(PlayerBtnStyle(isCurrent: game.player2.isCurrent))
                     }
                     .disabled(game.gameStart)
-//                    VStack{
-//                        HStack{
-//                            ForEach(0...2, id: \.self) { index in
-//                                SquareView(index: index)
-//                            }
-//                        }
-//                        HStack{
-//                            ForEach(3...5, id: \.self) { index in
-//                                SquareView(index: index)
-//                            }
-//                        }
-//                        HStack{
-//                            ForEach(6...8, id: \.self) { index in
-//                                SquareView(index: index)
-//                            }
-//                        }
-//                    }
-//                    Spacer()
                 }
                 
-                //MARK: - PLAYER 1 BOX
+                //MARK: - PLAYER-2 AREA
                 HStack{
                     Button {
-                        rollDice1()
+                        game.makeMove()
                     } label: {
-                        Image("dice\(diceResult1)")
+                        Image("dice\(game.player2.diceValue == 0 ? 6:game.player2.diceValue)")
                             .resizable()
                             .modifier(AvatarImageModifier())
-                            .offset(x: player1Turn ? 0 : 20)
-                            .opacity(player1Turn ? 1 : 0 )
-                            .animation(.default, value: player1Turn)
-
+                            .opacity(game.player2.isCurrent ? 1 : 0.5 )
+                            .animation(.default, value: game.player2.isCurrent)
                     }
+                    .disabled(game.player1.isCurrent) 
                     Spacer()
-                    Text("Player 1")
-//                        .font(.custom("LilitaOne-Regular", size: 20))
-                        .fontWeight(.heavy)
-                    Image(player1Avatar)
+                    VStack{
+                        Text(game.player2.name)
+                            .fontWeight(.heavy)
+                            .font(.custom("Lilita One", size: 20))
+                            .padding()
+                        Text("Score: \(game.player2.score)")
+                            .modifier(ScoreModifier())
+                    }
+                    game.player2.image
                         .resizable()
                         .modifier(AvatarImageModifier())
                 }
-                Spacer()
                 
-                //MARK: - GAME MAP
-                VStack{
-                    HStack{
+                ZStack {
+                    switch game.gameLevel {
+                    case .easy:
+                        //MARK: - GAME MAP - EASY
                         VStack{
-                            Image(player1Avatar)
-                                .resizable()
-                                .frame(width: 20, height: 20)
-                                .modifier(ShadowModifier())
-                            Image(player2Avatar)
-                                .resizable()
-                                .frame(width: 20, height: 20)
-                                .modifier(ShadowModifier())
+                            HStack{
+                                VStack{
+                                    Image(game.player2.position == -1 ? game.player2.avatar : "none")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .modifier(ShadowModifier())
+                                    Image(game.player1.position == -1 ?  game.player1.avatar : "none")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .modifier(ShadowModifier())
+                                }
+                                
+                                HStack{
+                                    ForEach(0...5, id: \.self) { index in
+                                        SquareView(index: index)
+                                    }
+                                }
+                            }
+                            HStack{
+                                Spacer()
+                                SquareView(index: 6)
+                                    .padding(.trailing)
+                                    .padding(.trailing)
+                            }
+                            HStack{
+                                ForEach(7...12, id: \.self) { index in
+                                    SquareView(index: 19 - index)
+                                }
+                            }
+                            HStack{
+                                SquareView(index: 13)
+                                    .padding(.leading)
+                                    .padding(.leading)
+                                Spacer()
+                            }
+                            HStack{
+                                ForEach(14...19, id: \.self) { index in
+                                    SquareView(index: index)
+                                }
+                            }
                         }
+                        .modifier(ShadowModifier())
+                        .overlay {
+                            if game.isThinking {
+                                VStack{
+                                    Text("Thinking...")
+                                        .foregroundColor(Color("Color-orange"))
+                                        .font(.custom("Lilita One", size: 30))
+                                    ProgressView()
+                                }
+                            }
+                        }
+                        .background(
+                            Image("bgmap")
+                                .resizable()
+                                .frame(width: 400, height: 300)
+                        )
+                        .disabled(true)
+                        Spacer()
+                    case .medium:
+                        //MARK: - GAME MAP - MEDIUM
+                        VStack{
+                            HStack{
+                                VStack{
+                                    Image(game.player2.position == -1 ? game.player2.avatar : "none")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .modifier(ShadowModifier())
+                                    Image(game.player1.position == -1 ?  game.player1.avatar : "none")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .modifier(ShadowModifier())
+                                }
+                                
+                                HStack{
+                                    ForEach(0...5, id: \.self) { index in
+                                        SquareView(index: index)
+                                    }
+                                }
+                            }
+                            HStack{
+                                Spacer()
+                                SquareView(index: 6)
+                                    .padding(.trailing)
+                                    .padding(.trailing)
+                            }
+                            HStack{
+                                ForEach(7...12, id: \.self) { index in
+                                    SquareView(index: 19 - index)
+                                }
+                            }
+                            HStack{
+                                SquareView(index: 13)
+                                    .padding(.leading)
+                                    .padding(.leading)
+                                Spacer()
+                            }
+                            HStack{
+                                ForEach(14...19, id: \.self) { index in
+                                    SquareView(index: index)
+                                }
+                            }
+                            HStack{
+                                Spacer()
+                                SquareView(index: 20)
+                                    .padding(.trailing)
+                                    .padding(.trailing)
+                            }
+                            HStack{
+                                ForEach(21...26, id: \.self) { index in
+                                    SquareView(index: 47 - index)
+                                }
+                            }
+                            HStack{
+                                SquareView(index: 27)
+                                    .padding(.leading)
+                                    .padding(.leading)
+                                Spacer()
+                            }
+                            HStack{
+                                ForEach(28...33, id: \.self) { index in
+                                    SquareView(index: index)
+                                }
+                            }
+                        }
+                        .modifier(ShadowModifier())
+                        .overlay {
+                            if game.isThinking {
+                                VStack{
+                                    Text("Thinking...")
+                                        .foregroundColor(Color("Color-orange"))
+                                        .font(.custom("Lilita One", size: 30))
+                                    ProgressView()
+                                }
+                            }
+                        }
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(.white)
+                                .frame(width: 350, height: 450)
+                        )
+                        .padding()
+                        .disabled(true)
                         
-                        BlockView(itemName: icons[0])
-                        BlockView(itemName: icons[1])
-                        BlockView(itemName: icons[2])
-                        BlockView(itemName: icons[3])
-                        BlockView(itemName: icons[4])
-                        BlockView(itemName: icons[5])
+                    case .hard:
+                        //MARK: - GAME MAP - HARD
+                        VStack{
+                            HStack{
+                                VStack{
+                                    Image(game.player2.position == -1 ? game.player2.avatar : "none")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .modifier(ShadowModifier())
+                                    Image(game.player1.position == -1 ?  game.player1.avatar : "none")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .modifier(ShadowModifier())
+                                }
+                                
+                                HStack{
+                                    ForEach(0...5, id: \.self) { index in
+                                        SquareView(index: index)
+                                    }
+                                }
+                            }
+                            HStack{
+                                Spacer()
+                                SquareView(index: 6)
+                                    .padding(.trailing)
+                                    .padding(.trailing)
+                            }
+                            HStack{
+                                ForEach(7...12, id: \.self) { index in
+                                    SquareView(index: 19 - index)
+                                }
+                            }
+                            HStack{
+                                SquareView(index: 13)
+                                    .padding(.leading)
+                                    .padding(.leading)
+                                Spacer()
+                            }
+                            HStack{
+                                ForEach(14...19, id: \.self) { index in
+                                    SquareView(index: index)
+                                }
+                            }
+                            HStack{
+                                Spacer()
+                                SquareView(index: 20)
+                                    .padding(.trailing)
+                                    .padding(.trailing)
+                            }
+                            HStack{
+                                ForEach(21...26, id: \.self) { index in
+                                    SquareView(index: 47 - index)
+                                }
+                            }
+                            HStack{
+                                SquareView(index: 27)
+                                    .padding(.leading)
+                                    .padding(.leading)
+                                Spacer()
+                            }
+                            HStack{
+                                ForEach(28...33, id: \.self) { index in
+                                    SquareView(index: index)
+                                }
+                            }
+                        }
+                        .modifier(ShadowModifier())
+                        .overlay {
+                            if game.isThinking {
+                                VStack{
+                                    Text("Thinking...")
+                                        .foregroundColor(Color("Color-orange"))
+                                        .font(.custom("Lilita One", size: 30))
+                                    ProgressView()
+                                }
+                            }
+                        }
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(.white)
+                                .frame(width: 350, height: 450)
+                        )
+                        .padding()
+                        .disabled(true)
                     }
-                    HStack{
-                        Spacer()
-                        BlockView(itemName: icons[6])
-                            .padding(.trailing)
-                            .padding(.trailing)
-                    }
-                    HStack{
-                        BlockView(itemName: icons[12])
-                        BlockView(itemName: icons[11])
-                        BlockView(itemName: icons[10])
-                        BlockView(itemName: icons[9])
-                        BlockView(itemName: icons[8])
-                        BlockView(itemName: icons[7])
-                    }
-                    HStack{
-                        BlockView(itemName: icons[13])
-                            .padding(.leading)
-                            .padding(.leading)
-                        Spacer()
-                    }
-                    HStack{
-                        BlockView(itemName: icons[14])
-                        BlockView(itemName: icons[15])
-                        BlockView(itemName: icons[16])
-                        BlockView(itemName: icons[17])
-                        BlockView(itemName: icons[18])
-                        BlockView(itemName: icons[19])
-                    }
-                }
-                Spacer()
-                
-                //MARK: - PLAYER 2 BOX
+                }.focused($focus)
+                //MARK: - PLAYER-1 AREA
                 HStack{
-                    Image(player2Avatar)
+                    game.player1.image
                         .resizable()
                         .modifier(AvatarImageModifier())
-                    Text("Player 2")
-//                        .font(.custom("LilitaOne-Regular", size: 20))
-                        .fontWeight(.heavy)
+                    VStack{
+                        Text(game.player1.name)
+                            .fontWeight(.heavy)
+                            .font(.custom("Lilita One", size: 20))
+                            .padding()
+                        Text("Score: \(game.player1.score)")
+                            .modifier(ScoreModifier())
+                    }
+                    
                     Spacer()
                     Button {
-                        rollDice2()
-                        move(position: player2Position, steps: 1)
+                        game.makeMove()
+                        print(game.player2.position)
+                        print(game.player1.position)
                     } label: {
-                        Image("dice\(diceResult2)")
+                        Image("dice\(game.player1.diceValue == 0 ? 1:game.player1.diceValue)")
                             .resizable()
                             .modifier(AvatarImageModifier())
-                            .offset(x: player2Turn ? 0 : 20)
-                            .opacity(player2Turn ? 1 : 0 )
-                            .animation(.default, value: player2Turn)
+                            .opacity(game.player1.isCurrent ? 1 : 0.5)
+                            .animation(.default, value: game.player1.isCurrent)
                     }
+                    .disabled(game.player2.isCurrent)
                 }
             }//Close vstack
+            .disabled(game.gameOver)
+            
+            // MARK: - GAMEOVER MODAL
+            if game.gameOver{
+                ZStack{
+                    Color("Color-black-transparent")
+                        .edgesIgnoringSafeArea(.all)
+                    VStack{
+                        Text("GAME OVER")
+                            .font(.system(.title, design: .rounded))
+                            .fontWeight(.heavy)
+                            .foregroundColor(Color.white)
+                            .padding()
+                            .frame(minWidth: 280, idealWidth: 280, maxWidth: 320)
+                            .background(Color("Color-red"))
+                        
+                        Spacer()
+                        
+                        VStack {
+                            Image("logo2")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(maxHeight: 150)
+                            Text("The winner is\n\(game.player1.isWinner ? game.player1.name : game.player2.name)\n See you again!")
+                                .font(.system(.body, design: .rounded))
+                                .foregroundColor(Color.white)
+                                .multilineTextAlignment(.center)
+                            Button {
+                                game.reset()
+                                audioPlayer?.stop()
+                            } label: {
+                                Text("New Game".uppercased())
+                                    .foregroundColor(Color(.white))
+                                    .fontWeight(.medium)
+                            }
+                            .padding(.vertical,10)
+                            .padding(.horizontal, 20)
+                            .background(
+                                Capsule()
+                                    .strokeBorder(lineWidth: 2)
+                                    .foregroundColor(Color("Color-red"))
+                            )
+                            
+                        }
+                        Spacer()
+                    }
+                    .frame(minWidth: 280, idealWidth: 280, maxWidth: 320, minHeight: 280, idealHeight: 300, maxHeight: 350, alignment: .center)
+                    .background(Color("Color-purple"))
+                    .cornerRadius(20)
+                }.onAppear(perform: {
+                    playSound(sound: "drum-music", type: "mp3")
+                })
+            }
+                
         }//Close zstack
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button("End Game") {
+                Button(action: {
+                    audioPlayer?.stop()
                     dismiss()
+                }) {
+                    Image(systemName: "xmark.circle")
+                        .font(.title)
                 }
-                .buttonStyle(.bordered)
+                .foregroundColor(.white)
+                .padding(.top, 10)
+                .padding(.trailing, 10)
             }
         }
+        .inNavigationStack()
     }
 }
 
@@ -219,6 +419,7 @@ struct GameView_Previews: PreviewProvider {
     }
 }
 
+//MARK: - PLAYER BUTTON STYLE
 struct PlayerBtnStyle: ButtonStyle {
     let isCurrent: Bool
     func makeBody(configuration: Configuration) -> some View {

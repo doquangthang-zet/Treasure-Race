@@ -22,28 +22,55 @@ enum GameType {
     }
 }
 
-enum GamePiece: String {
-    case bomb, portal,heart,shield, knight, pirate
-    var image: Image {
-        Image(self.rawValue)
+enum GameLevel {
+    case easy, medium, hard
+    
+    var description: String {
+        switch self {
+        case .easy:
+            return "The road is short and a little obstacles";
+        case .medium:
+            return "Longer road";
+        case .hard:
+            return "Longer road and more obstacles"
+        }
     }
 }
 
 struct Player {
-    let gamePiece: GamePiece
+    var avatar: String
     var name: String
-    var position: Int = 0
+    var position: Int = -1
+    var diceValue: Int = 0
+    var score: Int = 0
     var isCurrent = false
-    var isWinner:Bool {
-        if position == Move.winningMove {
-            return true
-        }
-        return false
+    var onRoad = false
+    var isWinner:Bool = false
+    
+    var image: Image {
+        Image(self.avatar)
+    }
+    
+    func rollDice() {
+        Dice.current = Int.random(in: 1...6)
+    }
+    
+    func kick(p: Player) {
+        var player = p
+        player.position = -1
+        player.onRoad = false
     }
 }
 
-enum Move{
-    static var all = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+enum Dice{
+    static var all = [1,2,3,4,5,6]
     
-    static var winningMove = 20
+    static var current = 0
+}
+
+enum Move{
+    static var winningMove = 19
+    static var winningMoveMedium = 33
+    static var winningMoveHard = 33
+    static var startPoint = 0
 }

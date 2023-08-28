@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE46DC662A9C5ABB003E2AB1 /* drum-music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AE46DC652A9C5ABB003E2AB1 /* drum-music.mp3 */; };
+		AE64A17F2A9B020F008636DD /* GameItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE64A17E2A9B020F008636DD /* GameItems.swift */; };
+		AE64A1812A9B3C36008636DD /* LeaderBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE64A1802A9B3C36008636DD /* LeaderBoardView.swift */; };
+		AE64A1832A9B3C6A008636DD /* HowToPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE64A1822A9B3C6A008636DD /* HowToPlayView.swift */; };
+		AE64A1852A9B3C7C008636DD /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE64A1842A9B3C7C008636DD /* SettingView.swift */; };
+		AE64A1872A9B3EDB008636DD /* Chicle-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE64A1862A9B3EDA008636DD /* Chicle-Regular.ttf */; };
 		AE8CB2FC2A9A01EF00E5B303 /* GameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8CB2FB2A9A01EF00E5B303 /* GameService.swift */; };
 		AE8CB2FE2A9A020A00E5B303 /* GameModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8CB2FD2A9A020A00E5B303 /* GameModels.swift */; };
 		AE8CB3012A9A023600E5B303 /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8CB3002A9A023600E5B303 /* ViewModifiers.swift */; };
@@ -24,10 +30,15 @@
 		AE9FAE6B2A987E4E00B0CCA2 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9FAE6A2A987E4E00B0CCA2 /* Modifiers.swift */; };
 		AE9FAE6E2A98804100B0CCA2 /* LilitaOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE9FAE6D2A98804100B0CCA2 /* LilitaOne-Regular.ttf */; };
 		AE9FAE712A9886B300B0CCA2 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = AE9FAE702A9886B200B0CCA2 /* OFL.txt */; };
-		AE9FAE732A98895C00B0CCA2 /* BlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9FAE722A98895C00B0CCA2 /* BlockView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AE46DC652A9C5ABB003E2AB1 /* drum-music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "drum-music.mp3"; sourceTree = "<group>"; };
+		AE64A17E2A9B020F008636DD /* GameItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameItems.swift; sourceTree = "<group>"; };
+		AE64A1802A9B3C36008636DD /* LeaderBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardView.swift; sourceTree = "<group>"; };
+		AE64A1822A9B3C6A008636DD /* HowToPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayView.swift; sourceTree = "<group>"; };
+		AE64A1842A9B3C7C008636DD /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		AE64A1862A9B3EDA008636DD /* Chicle-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Chicle-Regular.ttf"; sourceTree = "<group>"; };
 		AE8CB2FB2A9A01EF00E5B303 /* GameService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameService.swift; sourceTree = "<group>"; };
 		AE8CB2FD2A9A020A00E5B303 /* GameModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModels.swift; sourceTree = "<group>"; };
 		AE8CB3002A9A023600E5B303 /* ViewModifiers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
@@ -46,7 +57,6 @@
 		AE9FAE6A2A987E4E00B0CCA2 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		AE9FAE6D2A98804100B0CCA2 /* LilitaOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LilitaOne-Regular.ttf"; sourceTree = "<group>"; };
 		AE9FAE702A9886B200B0CCA2 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
-		AE9FAE722A98895C00B0CCA2 /* BlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,12 +70,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AE46DC642A9C5A7E003E2AB1 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				AE46DC652A9C5ABB003E2AB1 /* drum-music.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		AE8CB2FA2A9A01D100E5B303 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				AE8CB2FB2A9A01EF00E5B303 /* GameService.swift */,
 				AE8CB2FD2A9A020A00E5B303 /* GameModels.swift */,
 				AE8CB3032A9A024E00E5B303 /* GameSquare.swift */,
+				AE64A17E2A9B020F008636DD /* GameItems.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -101,6 +120,7 @@
 				AE8CB2FF2A9A023600E5B303 /* Utilities */,
 				AE8CB2FA2A9A01D100E5B303 /* Models */,
 				AE9FAE6C2A98802500B0CCA2 /* Fonts */,
+				AE46DC642A9C5A7E003E2AB1 /* Sounds */,
 				AE9FAE622A98769A00B0CCA2 /* Helpers */,
 				AE9FAE612A98768900B0CCA2 /* Views */,
 				AE9FAE552A9873C300B0CCA2 /* Assets.xcassets */,
@@ -124,9 +144,11 @@
 				AE9FAE5F2A98768000B0CCA2 /* MenuView.swift */,
 				AE8CB3062A9A09C700E5B303 /* GameTypeView.swift */,
 				AE9FAE662A98777600B0CCA2 /* GameView.swift */,
+				AE64A1802A9B3C36008636DD /* LeaderBoardView.swift */,
+				AE64A1822A9B3C6A008636DD /* HowToPlayView.swift */,
+				AE64A1842A9B3C7C008636DD /* SettingView.swift */,
 				AE8CB3022A9A024E00E5B303 /* SquareView.swift */,
 				AE9FAE682A987D4000B0CCA2 /* LogoView.swift */,
-				AE9FAE722A98895C00B0CCA2 /* BlockView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -144,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				AE9FAE702A9886B200B0CCA2 /* OFL.txt */,
+				AE64A1862A9B3EDA008636DD /* Chicle-Regular.ttf */,
 				AE9FAE6D2A98804100B0CCA2 /* LilitaOne-Regular.ttf */,
 			);
 			path = Fonts;
@@ -209,8 +232,10 @@
 			files = (
 				AE9FAE592A9873C300B0CCA2 /* Preview Assets.xcassets in Resources */,
 				AE9FAE6E2A98804100B0CCA2 /* LilitaOne-Regular.ttf in Resources */,
+				AE46DC662A9C5ABB003E2AB1 /* drum-music.mp3 in Resources */,
 				AE9FAE712A9886B300B0CCA2 /* OFL.txt in Resources */,
 				AE9FAE562A9873C300B0CCA2 /* Assets.xcassets in Resources */,
+				AE64A1872A9B3EDB008636DD /* Chicle-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,13 +246,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE9FAE732A98895C00B0CCA2 /* BlockView.swift in Sources */,
+				AE64A1832A9B3C6A008636DD /* HowToPlayView.swift in Sources */,
+				AE64A1812A9B3C36008636DD /* LeaderBoardView.swift in Sources */,
 				AE9FAE542A9873C100B0CCA2 /* ContentView.swift in Sources */,
 				AE9FAE692A987D4000B0CCA2 /* LogoView.swift in Sources */,
 				AE8CB3042A9A024E00E5B303 /* SquareView.swift in Sources */,
 				AE8CB3052A9A024E00E5B303 /* GameSquare.swift in Sources */,
+				AE64A17F2A9B020F008636DD /* GameItems.swift in Sources */,
 				AE8CB2FC2A9A01EF00E5B303 /* GameService.swift in Sources */,
 				AE9FAE6B2A987E4E00B0CCA2 /* Modifiers.swift in Sources */,
+				AE64A1852A9B3C7C008636DD /* SettingView.swift in Sources */,
 				AE9FAE652A9876D800B0CCA2 /* PlaySound.swift in Sources */,
 				AE9FAE602A98768000B0CCA2 /* MenuView.swift in Sources */,
 				AE8CB2FE2A9A020A00E5B303 /* GameModels.swift in Sources */,

@@ -11,17 +11,21 @@ struct SquareView: View {
     @EnvironmentObject var game: GameService
     let index: Int
     var body: some View {
-        Button {
-            
-        } label: {
+        ZStack{
             game.gameBoard[index].image
+                .resizable()
+                .modifier(BlockModifier())
+            game.gameItems[index].image
+                .resizable()
+                .frame(width: 30, height: 30)
+                .modifier(ShadowModifier())
         }
     }
 }
 
 struct SquareView_Previews: PreviewProvider {
     static var previews: some View {
-        SquareView(index: 1)
+        SquareView(index: 0)
             .environmentObject(GameService())
     }
 }

@@ -9,19 +9,21 @@ import SwiftUI
 
 struct GameSquare {
     var id: Int
-    var player: Player?
     
     var image: Image {
-        if let player = player {
-            return player.gamePiece.image
-        } else {
-            return Image("frame_black")
-        }
+        return Image("frame_black")
     }
     
     static var reset: [GameSquare] {
         var squares = [GameSquare]()
-        for index in 1...20 {
+        for index in 0...19 {
+            squares.append(GameSquare(id: index))
+        }
+        return squares
+    }
+    static var resetMedium: [GameSquare] {
+        var squares = [GameSquare]()
+        for index in 0...33 {
             squares.append(GameSquare(id: index))
         }
         return squares
