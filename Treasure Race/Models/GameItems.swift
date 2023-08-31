@@ -11,8 +11,8 @@ struct GameItems {
     var id: Int
     var player: Player?
     var icons = ["start-button","none","bomb","none","none","three","none","none","none","number","portal","none","none","portal2","none","none","bomb","none","none","treasure"]
-    var iconsMedium = ["start-button","none","bomb","none","none","three","none","none","none","number","portal","none","none","portal2","none","none","bomb","none","none","none","none","bomb","none","none","none","none","bomb","none","none","none","none","none","none","treasure"]
-    var iconsHard = ["start-button","none","bomb","none","none","three","none","none","none","number","portal","none","none","portal2","none","none","bomb","none","none","none","none","bomb","none","none","none","none","bomb","none","none","none","none","bomb","bomb","treasure"]
+    var iconsMedium = ["start-button","none","bomb","none","none","three","none","none","none","number","portal","none","none","portal2","none","none","bomb","none","none","bomb","none","bomb","none","none","none","none","bomb","none","none","none","none","none","none","treasure"]
+    var iconsHard = ["start-button","none","bomb","none","none","three","none","none","none","number","portal","none","none","portal2","none","none","bomb","none","none","bomb","none","bomb","none","none","none","none","bomb","none","number","none","none","bomb","bomb","treasure"]
     
     static var level = GameLevel.easy
     
@@ -35,19 +35,16 @@ struct GameItems {
         var items = [GameItems]()
         switch GameItems.level {
             case .easy:
-            icons = ["start-button","none","bomb","none","none","three","none","none","none","number","portal","none","none","portal2","none","none","bomb","none","none","treasure"]
                 for index in 0...19 {
                     items.append(GameItems(id: index))
                 }
                 return items
             case .medium:
-                icons = ["start-button","none","bomb","none","none","three","none","none","none","number","portal","none","none","portal2","none","none","bomb","none","none","none","none","bomb","none","none","none","none","bomb","none","none","none","none","none","none","treasure"]
                 for index in 0...33 {
                     items.append(GameItems(id: index))
                 }
                 return items
             case .hard:
-                icons = ["start-button","none","bomb","none","none","three","none","none","none","number","portal","none","none","portal2","none","none","bomb","none","none","none","none","bomb","none","none","none","none","bomb","none","none","none","none","bomb","bomb","treasure"]
                 for index in 0...33 {
                     items.append(GameItems(id: index))
                 }

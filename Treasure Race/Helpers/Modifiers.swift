@@ -38,6 +38,14 @@ struct BlockModifier: ViewModifier{
             .modifier(ShadowModifier())
     }
 }
+
+struct IconsModifier: ViewModifier{
+    func body(content: Content) -> some View {
+        content
+            .frame(width: 30, height: 30)
+            .modifier(ShadowModifier())
+    }
+}
  
 struct ButtonMenuModifier: ViewModifier{
     func body(content: Content) -> some View {
@@ -53,7 +61,7 @@ struct ButtonMenuModifier: ViewModifier{
             )
             .overlay(
                 Capsule()
-                    .stroke(Color("Color-light-yellow"), lineWidth: 4)
+                    .stroke(Color("Color-border"), lineWidth: 4)
                     .frame(width: 250, height: 60, alignment: .center)
             )
             .padding(30)
@@ -72,7 +80,7 @@ struct ScoreModifier: ViewModifier{
             )
             .overlay(
                 Capsule()
-                    .stroke(Color("Color-light-yellow"), lineWidth: 4)
+                    .stroke(Color("Color-border"), lineWidth: 4)
                     .frame(width: 150, height: 35, alignment: .center)
             )
     }
@@ -86,12 +94,12 @@ struct LevelButtonModifier: ViewModifier{
             .background(
                 Capsule()
                     .fill(LinearGradient(gradient: Gradient(colors: [Color("Color-red"), Color("Color-orange-light")]), startPoint: .bottom, endPoint: .top))
-                    .frame(width: 90, height: 35, alignment: .center)
+                    .frame(width: 120, height: 35, alignment: .center)
             )
             .overlay(
                 Capsule()
-                    .stroke(Color("Color-light-yellow"), lineWidth: 4)
-                    .frame(width: 100, height: 35, alignment: .center)
+                    .stroke(Color("Color-border"), lineWidth: 4)
+                    .frame(width: 130, height: 35, alignment: .center)
             )
     }
 }

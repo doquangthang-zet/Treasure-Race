@@ -11,12 +11,14 @@ struct ContentView: View {
     @EnvironmentObject var game: GameService
     var body: some View {
         MenuView()
+            .environment(\.locale, Locale.init(identifier: game.language))
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuView()
+        ContentView()
             .environmentObject(GameService())
+            .environment(\.locale, Locale.init(identifier: "vi"))
     }
 }

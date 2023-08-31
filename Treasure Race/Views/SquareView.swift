@@ -17,8 +17,7 @@ struct SquareView: View {
                 .modifier(BlockModifier())
             game.gameItems[index].image
                 .resizable()
-                .frame(width: 30, height: 30)
-                .modifier(ShadowModifier())
+                .modifier(IconsModifier())
         }
     }
 }

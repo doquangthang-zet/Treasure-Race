@@ -33,6 +33,7 @@ struct GameView: View {
                     HStack{
                         Button(game.player1.name) {
                             game.player1.isCurrent = true
+                            playSound(sound: "twink", type: "mp3")
                         }
                         .buttonStyle(PlayerBtnStyle(isCurrent: game.player1.isCurrent))
                         
@@ -53,6 +54,21 @@ struct GameView: View {
                 HStack{
                     Button {
                         game.makeMove()
+                        playSound(sound: "diceroll", type: "mp3")
+                        do {
+                            sleep(1)
+                        }
+                        if game.possibleMoves == false {
+                            playSound(sound: "negative", type: "mp3")
+                        } else if game.getBomb == true {
+                            playSound(sound: "explotion", type: "mp3")
+                        } else if game.getPortal == true {
+                            playSound(sound: "teleport", type: "mp3")
+                        } else if game.isKicked == true {
+                            playSound(sound: "aha", type: "mp3")
+                        } else {
+                            playSound(sound: "jump", type: "mp3")
+                        }
                     } label: {
                         Image("dice\(game.player2.diceValue == 0 ? 6:game.player2.diceValue)")
                             .resizable()
@@ -327,8 +343,19 @@ struct GameView: View {
                     Spacer()
                     Button {
                         game.makeMove()
-                        print(game.player2.position)
-                        print(game.player1.position)
+                        playSound(sound: "diceroll", type: "mp3")
+                        do{sleep(1)}
+                        if game.possibleMoves == false {
+                            playSound(sound: "negative", type: "mp3")
+                        } else if game.getBomb == true {
+                            playSound(sound: "explotion", type: "mp3")
+                        } else if game.getPortal == true {
+                            playSound(sound: "teleport", type: "mp3")
+                        } else if game.isKicked == true {
+                            playSound(sound: "aha", type: "mp3")
+                        } else {
+                            playSound(sound: "jump", type: "mp3")
+                        }
                     } label: {
                         Image("dice\(game.player1.diceValue == 0 ? 1:game.player1.diceValue)")
                             .resizable()
@@ -394,11 +421,13 @@ struct GameView: View {
             }
                 
         }//Close zstack
+        .environment(\.colorScheme, game.isDark ? .dark : .light)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
-                    audioPlayer?.stop()
+//                    audioPlayer?.stop()
                     dismiss()
+                    playSound(sound: "fairytail", type: "mp3")
                 }) {
                     Image(systemName: "xmark.circle")
                         .font(.title)

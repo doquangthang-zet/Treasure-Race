@@ -12,11 +12,16 @@ class GameService: ObservableObject {
     @Published var player1 = Player(avatar: "pirate", name: "Player 1")
     @Published var player2 = Player(avatar: "knight", name: "Player 2")
     @Published var possibleMoves = true
+    @Published var getBomb = false
     @Published var gameOver = false
+    @Published var getPortal = false
+    @Published var isKicked = false
     @Published var gameBoard = GameSquare.reset
     @Published var gameItems = GameItems.reset
     @Published var isThinking = false
     @Published var winPosition = 19
+    @AppStorage("isDarkMode") var isDark = false
+    @AppStorage("setLanguage") var language = "en"
     
     var gameType = GameType.single
     var gameLevel = GameLevel.easy
@@ -126,26 +131,44 @@ class GameService: ObservableObject {
         
         if player1.isCurrent {
             if checkMove(index: index) == "bomb" {
+                getBomb = true
+                getPortal = false
+                isKicked = false
                 player1.position = -1
                 player1.onRoad = false
             } else if checkMove(index: index) == "three" {
+                getBomb = false
+                getPortal = true
+                isKicked = false
                 newIndex += 3
                 player1.position += 3
                 gameItems[newIndex].player = player1
             } else if checkMove(index: index) == "number" {
+                getBomb = false
+                getPortal = true
+                isKicked = false
                 newIndex -= 2
                 player1.position -= 2
                 gameItems[newIndex].player = player1
             } else if checkMove(index: index) == "portal" {
+                getBomb = false
+                getPortal = true
+                isKicked = false
                 newIndex += 3
                 player1.position += 3
                 gameItems[newIndex].player = player1
             } else if index == player2.position {
+                getBomb = false
+                getPortal = false
+                isKicked = true
                 player2.position = -1
                 player2.onRoad = false
                 player1.score += 100
                 gameItems[index].player = player1
             } else {
+                getBomb = false
+                getPortal = false
+                isKicked = false
                 gameItems[index].player = player1
             }
 
@@ -154,25 +177,44 @@ class GameService: ObservableObject {
             }
         } else {
             if checkMove(index: index) == "bomb" {
+                getBomb = true
+                getPortal = false
+                isKicked = false
                 player2.position = -1
                 player2.onRoad = false
             } else if checkMove(index: index) == "three" {
+                getBomb = false
+                getPortal = true
+                isKicked = false
                 newIndex += 3
                 player2.position += 3
                 gameItems[newIndex].player = player2
             } else if checkMove(index: index) == "number" {
+                getBomb = false
+                getPortal = true
+                isKicked = false
                 newIndex -= 2
                 player2.position -= 2
                 gameItems[newIndex].player = player2
             } else if checkMove(index: index) == "portal" {
+                getBomb = false
+                getPortal = true
+                isKicked = false
                 newIndex += 3
                 player2.position += 3
                 gameItems[newIndex].player = player2
             } else if index == player1.position {
+                getBomb = false
+                getPortal = false
+                isKicked = true
                 player1.position = -1
                 player1.onRoad = false
+                player2.score += 100
                 gameItems[index].player = player2
             } else {
+                getBomb = false
+                getPortal = false
+                isKicked = false
                 gameItems[index].player = player2
             }
 
@@ -194,16 +236,42 @@ class GameService: ObservableObject {
     }
     
     func checkMove(index: Int) -> String {
-        if gameItems[index].icons[index] == "bomb" {
-            return "bomb"
-        } else if gameItems[index].icons[index] == "three"{
-            return "three"
-        } else if gameItems[index].icons[index] == "number"{
-            return "number"
-        } else if gameItems[index].icons[index] == "portal"{
-            return "portal"
+        if gameLevel == .easy {
+            if gameItems[index].icons[index] == "bomb" {
+                return "bomb"
+            } else if gameItems[index].icons[index] == "three"{
+                return "three"
+            } else if gameItems[index].icons[index] == "number"{
+                return "number"
+            } else if gameItems[index].icons[index] == "portal"{
+                return "portal"
+            } else {
+                return "none"
+            }
+        } else if gameLevel == .medium {
+            if gameItems[index].iconsMedium[index] == "bomb" {
+                return "bomb"
+            } else if gameItems[index].iconsMedium[index] == "three"{
+                return "three"
+            } else if gameItems[index].iconsMedium[index] == "number"{
+                return "number"
+            } else if gameItems[index].iconsMedium[index] == "portal"{
+                return "portal"
+            } else {
+                return "none"
+            }
         } else {
-            return "none"
+            if gameItems[index].iconsHard[index] == "bomb" {
+                return "bomb"
+            } else if gameItems[index].iconsHard[index] == "three"{
+                return "three"
+            } else if gameItems[index].iconsHard[index] == "number"{
+                return "number"
+            } else if gameItems[index].iconsHard[index] == "portal"{
+                return "portal"
+            } else {
+                return "none"
+            }
         }
     }
     
@@ -242,6 +310,7 @@ class GameService: ObservableObject {
                 if Dice.current == 1 || Dice.current == 6 {
                     player2.onRoad = true
                     player2.position = 0
+                    player2.score += 100
                     possibleMoves = true
                     withAnimation {
                         updateMoves(index: 0)

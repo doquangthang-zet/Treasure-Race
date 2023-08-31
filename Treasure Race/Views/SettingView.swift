@@ -12,6 +12,7 @@ struct SettingView: View {
     @EnvironmentObject var game: GameService
     @State private var level: GameLevel = .easy
     
+    
     var body: some View {
         ZStack{
             // MARK: - BACKGROUND
@@ -19,7 +20,10 @@ struct SettingView: View {
                 .edgesIgnoringSafeArea(.all)
      
             VStack{
-                Picker("Select Game Level", selection: $level) {
+                Text("Ajust difficulty")
+                    .modifier(ButtonMenuModifier())
+                    
+                Picker("Select Game Level", selection: $game.gameLevel) {
                     Text("Easy").tag(GameLevel.easy)
                     Text("Medium").tag(GameLevel.medium)
                     Text("Hard").tag(GameLevel.hard)
@@ -27,19 +31,38 @@ struct SettingView: View {
                 .modifier(ScoreModifier())
                 .padding()
 
-                Button {
-                    game.setupLevel(gameLevel: level)
-                } label: {
-                    Text("Set")
-                        .modifier(LevelButtonModifier())
+                Text(level.description)
+                    .padding(.bottom, 20)
+                    .font(.custom("LilitaOne", size: 20))
+                    .foregroundColor(Color("Color-purple"))
+                
+
+                Text("Theme")
+                    .modifier(ButtonMenuModifier())
+                
+                Button(action: {game.isDark.toggle()}, label: {
+                    game.isDark ? Label("Dark", systemImage: "moon.circle.fill"):Label("Light", systemImage: "moon.circle")
+                })
+                
+                .padding()
+                
+                Text("Ajust language")
+                    .modifier(ButtonMenuModifier())
+                Picker("Select Game Level", selection: $game.language) {
+                    Text("English").tag("en")
+                    Text("Vietnamese").tag("vi")
                 }
-                .modifier(LightShadowModifier())
+                .modifier(ScoreModifier())
+                .padding()
             }
         }
+        .environment(\.colorScheme, game.isDark ? .dark : .light)
+//        .onAppear {
+//            audioPlayer?.stop()
+//        }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
-                    //audioPlayer?.stop()
                     dismiss()
                 }) {
                     Image(systemName: "xmark.circle")

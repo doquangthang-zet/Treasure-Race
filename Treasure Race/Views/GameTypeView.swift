@@ -224,9 +224,10 @@ struct GameTypeView: View {
 
                 Button(action: {
                     game.setupGame(gameType: gameType, player1Name: yourName, player2Name: opponentName, player1Avatar: yourAvatar, player2Avatar: opponentAvatar)
-//                    game.setupLevel(gameLevel: level)
+                    game.setupLevel(gameLevel: game.gameLevel)
                     focus = false
                     startGame = true
+                    audioPlayer?.stop()
                 }, label: {
                     Text("Start Game")
                         .modifier(ButtonMenuModifier())
@@ -239,8 +240,10 @@ struct GameTypeView: View {
                 Spacer()
             }
         }
+        .environment(\.colorScheme, game.isDark ? .dark : .light)
         .fullScreenCover(isPresented: $startGame){
             GameView()
+                .environment(\.locale, Locale.init(identifier: game.language))
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {

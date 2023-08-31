@@ -28,7 +28,7 @@ struct MenuView: View {
                 Button {
                     start = true
                 } label: {
-                    Text("Start")
+                    Text("start")
                         .modifier(ButtonMenuModifier())
                 }
                 .modifier(LightShadowModifier())
@@ -36,21 +36,21 @@ struct MenuView: View {
                 Button {
                     leaderBoard = true
                 } label: {
-                    Text("Leader Board")
+                    Text("leader_board")
                         .modifier(ButtonMenuModifier())
                 }
                 .modifier(LightShadowModifier())
                 Button {
                     howToPlay = true
                 } label: {
-                    Text("How To Play")
+                    Text("how_to_play")
                         .modifier(ButtonMenuModifier())
                 }
                 .modifier(LightShadowModifier())
                 Button {
                     setting = true
                 } label: {
-                    Text("Setting")
+                    Text("settings")
                         .modifier(ButtonMenuModifier())
                 }
                 .modifier(LightShadowModifier())
@@ -58,17 +58,25 @@ struct MenuView: View {
                 Spacer()
             } 
         }//zstack
+        .environment(\.colorScheme, game.isDark ? .dark : .light)
+        .onAppear {
+            playSound(sound: "fairytail", type: "mp3")
+        }
         .fullScreenCover(isPresented: $start){
             GameTypeView()
+                .environment(\.locale, Locale.init(identifier: game.language))
         }
         .fullScreenCover(isPresented: $leaderBoard){
             LeaderBoardView()
+                .environment(\.locale, Locale.init(identifier: game.language))
         }
         .fullScreenCover(isPresented: $howToPlay){
             HowToPlayView()
+                .environment(\.locale, Locale.init(identifier: game.language))
         }
         .fullScreenCover(isPresented: $setting){
             SettingView()
+                .environment(\.locale, Locale.init(identifier: game.language))
         }
         .inNavigationStack()
     }

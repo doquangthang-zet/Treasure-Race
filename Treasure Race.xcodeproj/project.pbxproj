@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE1EA8192AA07F0000A32243 /* jump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AE1EA8102AA07F0000A32243 /* jump.mp3 */; };
+		AE1EA81A2AA07F0000A32243 /* winning.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AE1EA8112AA07F0000A32243 /* winning.mp3 */; };
+		AE1EA81B2AA07F0000A32243 /* aha.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AE1EA8122AA07F0000A32243 /* aha.mp3 */; };
+		AE1EA81C2AA07F0000A32243 /* twink.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AE1EA8132AA07F0000A32243 /* twink.mp3 */; };
+		AE1EA81D2AA07F0000A32243 /* explotion.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AE1EA8142AA07F0000A32243 /* explotion.mp3 */; };
+		AE1EA81E2AA07F0000A32243 /* teleport.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AE1EA8152AA07F0000A32243 /* teleport.mp3 */; };
+		AE1EA81F2AA07F0000A32243 /* fairytail.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AE1EA8162AA07F0000A32243 /* fairytail.mp3 */; };
+		AE1EA8202AA07F0000A32243 /* bonus.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AE1EA8172AA07F0000A32243 /* bonus.mp3 */; };
+		AE1EA8212AA07F0000A32243 /* negative.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AE1EA8182AA07F0000A32243 /* negative.mp3 */; };
+		AE1EA8232AA0842600A32243 /* diceroll.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AE1EA8222AA0842600A32243 /* diceroll.mp3 */; };
+		AE1EA82C2AA08EF700A32243 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AE1EA82E2AA08EF700A32243 /* Localizable.strings */; };
 		AE46DC662A9C5ABB003E2AB1 /* drum-music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AE46DC652A9C5ABB003E2AB1 /* drum-music.mp3 */; };
 		AE64A17F2A9B020F008636DD /* GameItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE64A17E2A9B020F008636DD /* GameItems.swift */; };
 		AE64A1812A9B3C36008636DD /* LeaderBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE64A1802A9B3C36008636DD /* LeaderBoardView.swift */; };
@@ -33,6 +44,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AE1EA8102AA07F0000A32243 /* jump.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = jump.mp3; path = ../../../../../Downloads/jump.mp3; sourceTree = "<group>"; };
+		AE1EA8112AA07F0000A32243 /* winning.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = winning.mp3; path = ../../../../../Downloads/winning.mp3; sourceTree = "<group>"; };
+		AE1EA8122AA07F0000A32243 /* aha.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = aha.mp3; path = ../../../../../Downloads/aha.mp3; sourceTree = "<group>"; };
+		AE1EA8132AA07F0000A32243 /* twink.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = twink.mp3; path = ../../../../../Downloads/twink.mp3; sourceTree = "<group>"; };
+		AE1EA8142AA07F0000A32243 /* explotion.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = explotion.mp3; path = ../../../../../Downloads/explotion.mp3; sourceTree = "<group>"; };
+		AE1EA8152AA07F0000A32243 /* teleport.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = teleport.mp3; path = ../../../../../Downloads/teleport.mp3; sourceTree = "<group>"; };
+		AE1EA8162AA07F0000A32243 /* fairytail.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = fairytail.mp3; path = ../../../../../Downloads/fairytail.mp3; sourceTree = "<group>"; };
+		AE1EA8172AA07F0000A32243 /* bonus.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bonus.mp3; path = ../../../../../Downloads/bonus.mp3; sourceTree = "<group>"; };
+		AE1EA8182AA07F0000A32243 /* negative.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = negative.mp3; path = ../../../../../Downloads/negative.mp3; sourceTree = "<group>"; };
+		AE1EA8222AA0842600A32243 /* diceroll.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = diceroll.mp3; sourceTree = "<group>"; };
+		AE1EA82D2AA08EF700A32243 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		AE1EA82F2AA08F0300A32243 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AE46DC652A9C5ABB003E2AB1 /* drum-music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "drum-music.mp3"; sourceTree = "<group>"; };
 		AE64A17E2A9B020F008636DD /* GameItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameItems.swift; sourceTree = "<group>"; };
 		AE64A1802A9B3C36008636DD /* LeaderBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardView.swift; sourceTree = "<group>"; };
@@ -73,6 +96,16 @@
 		AE46DC642A9C5A7E003E2AB1 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				AE1EA8122AA07F0000A32243 /* aha.mp3 */,
+				AE1EA8172AA07F0000A32243 /* bonus.mp3 */,
+				AE1EA8142AA07F0000A32243 /* explotion.mp3 */,
+				AE1EA8162AA07F0000A32243 /* fairytail.mp3 */,
+				AE1EA8102AA07F0000A32243 /* jump.mp3 */,
+				AE1EA8182AA07F0000A32243 /* negative.mp3 */,
+				AE1EA8222AA0842600A32243 /* diceroll.mp3 */,
+				AE1EA8152AA07F0000A32243 /* teleport.mp3 */,
+				AE1EA8132AA07F0000A32243 /* twink.mp3 */,
+				AE1EA8112AA07F0000A32243 /* winning.mp3 */,
 				AE46DC652A9C5ABB003E2AB1 /* drum-music.mp3 */,
 			);
 			path = Sounds;
@@ -140,6 +173,7 @@
 		AE9FAE612A98768900B0CCA2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AE1EA82E2AA08EF700A32243 /* Localizable.strings */,
 				AE9FAE532A9873C100B0CCA2 /* ContentView.swift */,
 				AE9FAE5F2A98768000B0CCA2 /* MenuView.swift */,
 				AE8CB3062A9A09C700E5B303 /* GameTypeView.swift */,
@@ -214,6 +248,7 @@
 			knownRegions = (
 				en,
 				Base,
+				vi,
 			);
 			mainGroup = AE9FAE452A9873C100B0CCA2;
 			productRefGroup = AE9FAE4F2A9873C100B0CCA2 /* Products */;
@@ -231,9 +266,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE9FAE592A9873C300B0CCA2 /* Preview Assets.xcassets in Resources */,
+				AE1EA81F2AA07F0000A32243 /* fairytail.mp3 in Resources */,
 				AE9FAE6E2A98804100B0CCA2 /* LilitaOne-Regular.ttf in Resources */,
+				AE1EA81C2AA07F0000A32243 /* twink.mp3 in Resources */,
+				AE1EA81D2AA07F0000A32243 /* explotion.mp3 in Resources */,
 				AE46DC662A9C5ABB003E2AB1 /* drum-music.mp3 in Resources */,
+				AE1EA8212AA07F0000A32243 /* negative.mp3 in Resources */,
+				AE1EA8202AA07F0000A32243 /* bonus.mp3 in Resources */,
+				AE1EA8232AA0842600A32243 /* diceroll.mp3 in Resources */,
+				AE1EA81E2AA07F0000A32243 /* teleport.mp3 in Resources */,
+				AE1EA81A2AA07F0000A32243 /* winning.mp3 in Resources */,
 				AE9FAE712A9886B300B0CCA2 /* OFL.txt in Resources */,
+				AE1EA82C2AA08EF700A32243 /* Localizable.strings in Resources */,
+				AE1EA8192AA07F0000A32243 /* jump.mp3 in Resources */,
+				AE1EA81B2AA07F0000A32243 /* aha.mp3 in Resources */,
 				AE9FAE562A9873C300B0CCA2 /* Assets.xcassets in Resources */,
 				AE64A1872A9B3EDB008636DD /* Chicle-Regular.ttf in Resources */,
 			);
@@ -268,11 +314,24 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		AE1EA82E2AA08EF700A32243 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AE1EA82D2AA08EF700A32243 /* en */,
+				AE1EA82F2AA08F0300A32243 /* vi */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		AE9FAE5A2A9873C300B0CCA2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -333,6 +392,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

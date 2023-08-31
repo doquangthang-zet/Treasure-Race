@@ -22,6 +22,7 @@ struct LeaderBoardView: View {
                 
             }
         }
+        .environment(\.colorScheme, game.isDark ? .dark : .light)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
@@ -47,5 +48,6 @@ struct LeaderBoardView: View {
 struct LeaderBoardView_Previews: PreviewProvider {
     static var previews: some View {
         LeaderBoardView()
+            .environmentObject(GameService())
     }
 }
