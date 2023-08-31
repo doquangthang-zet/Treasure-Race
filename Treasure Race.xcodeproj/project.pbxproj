@@ -41,6 +41,7 @@
 		AE9FAE6B2A987E4E00B0CCA2 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9FAE6A2A987E4E00B0CCA2 /* Modifiers.swift */; };
 		AE9FAE6E2A98804100B0CCA2 /* LilitaOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE9FAE6D2A98804100B0CCA2 /* LilitaOne-Regular.ttf */; };
 		AE9FAE712A9886B300B0CCA2 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = AE9FAE702A9886B200B0CCA2 /* OFL.txt */; };
+		AEF0C0702AA0C2E6002574CE /* ListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF0C06F2AA0C2E6002574CE /* ListRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +81,7 @@
 		AE9FAE6A2A987E4E00B0CCA2 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		AE9FAE6D2A98804100B0CCA2 /* LilitaOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LilitaOne-Regular.ttf"; sourceTree = "<group>"; };
 		AE9FAE702A9886B200B0CCA2 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		AEF0C06F2AA0C2E6002574CE /* ListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 				AE64A1842A9B3C7C008636DD /* SettingView.swift */,
 				AE8CB3022A9A024E00E5B303 /* SquareView.swift */,
 				AE9FAE682A987D4000B0CCA2 /* LogoView.swift */,
+				AEF0C06F2AA0C2E6002574CE /* ListRowView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				AE8CB3012A9A023600E5B303 /* ViewModifiers.swift in Sources */,
 				AE8CB3072A9A09C700E5B303 /* GameTypeView.swift in Sources */,
 				AE9FAE672A98777600B0CCA2 /* GameView.swift in Sources */,
+				AEF0C0702AA0C2E6002574CE /* ListRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

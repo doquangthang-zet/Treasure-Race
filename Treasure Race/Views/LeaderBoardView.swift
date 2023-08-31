@@ -18,8 +18,10 @@ struct LeaderBoardView: View {
             LinearGradient(gradient: Gradient(colors: [Color("Color-orange"), Color("Color-red")]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all)
             
-            VStack{
-                
+            List{
+                ForEach(game.users) { user in
+                    ListRowView(u: user)
+                }
             }
         }
         .environment(\.colorScheme, game.isDark ? .dark : .light)

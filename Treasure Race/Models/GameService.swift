@@ -22,6 +22,12 @@ class GameService: ObservableObject {
     @Published var winPosition = 19
     @AppStorage("isDarkMode") var isDark = false
     @AppStorage("setLanguage") var language = "en"
+    @Published var users:[Player] = [] {
+        didSet{
+            savePlayerStatus()
+        }
+    }
+    let userKey: String = "users_list"
     
     var gameType = GameType.single
     var gameLevel = GameLevel.easy
@@ -227,6 +233,7 @@ class GameService: ObservableObject {
     func checkIfWinner() {
         if player1.isWinner || player2.isWinner {
             gameOver = true
+            addUser()
         }
     }
     
@@ -342,11 +349,13 @@ class GameService: ObservableObject {
         }
         if player1.position == winPosition {
             gameOver = true
+            addUser()
             player1.isWinner = true
             player1.score += 100
         }
         if player2.position == winPosition {
             gameOver = true
+            addUser()
             player2.isWinner = true
             player2.score += 100
         }
@@ -357,5 +366,36 @@ class GameService: ObservableObject {
         try? await Task.sleep(nanoseconds: 1000_000_000)
         makeMove()
         isThinking.toggle()
+    }
+    
+    func getUsers() {
+        guard
+            let data = UserDefaults.standard.data(forKey: userKey),
+            let savedUser = try? JSONDecoder().decode([Player].self, from: data)
+        else { return }
+        
+        self.users = savedUser
+    }
+    
+    func addUser() {
+        switch gameType {
+        case .single:
+            users.append(player1)
+            users.append(player2)
+        case .bot:
+            users.append(player1)
+        case .undetermined:
+            break
+        }
+    }
+    
+    func savePlayerStatus() {
+        if let encodedData = try? JSONEncoder().encode(users) {
+            UserDefaults.standard.set(encodedData, forKey: userKey)
+        }
+    }
+    
+    func saveProgress() {
+        
     }
 }

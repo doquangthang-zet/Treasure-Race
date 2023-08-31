@@ -37,7 +37,8 @@ enum GameLevel {
     }
 }
 
-struct Player {
+struct Player: Identifiable, Codable {
+    let id: String
     var avatar: String
     var name: String
     var position: Int = -1
@@ -46,6 +47,9 @@ struct Player {
     var isCurrent = false
     var onRoad = false
     var isWinner:Bool = false
+    var getBadge1:Bool = false
+    var getBadge2:Bool = false
+    var getBadge3:Bool = false
     
     var image: Image {
         Image(self.avatar)
@@ -59,6 +63,11 @@ struct Player {
         var player = p
         player.position = -1
         player.onRoad = false
+    }
+    init(id: String = UUID().uuidString, avatar: String, name: String) {
+        self.id = id
+        self.avatar = avatar
+        self.name = name
     }
 }
 
