@@ -23,7 +23,7 @@
 "choose-player-go-first" = "Choose player go first";
 "score" = "Score";
 "game-over" ="GAME OVER";
-"winnner %@" = "The winner is %@";
+"winner" = "The winner is";
 "see-you" = "See you later!";
 "new-game" = "New game";
 "next-level" = "Next level";

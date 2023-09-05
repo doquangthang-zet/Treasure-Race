@@ -23,7 +23,7 @@
 "choose-player-go-first" = "Chọn người chơi bắt đầu";
 "score" = "Điểm";
 "game-over" ="KẾT THÚC";
-"winnner %@" = "Người thắng là %@";
+"winner" = "Người thắng là";
 "see-you" = "Hẹn gặp lại!";
 "new-game" = "Chơi mới";
 "next-level" = "Vòng sau";

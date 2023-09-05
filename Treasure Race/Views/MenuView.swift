@@ -86,6 +86,7 @@ struct MenuView: View {
         .environment(\.colorScheme, game.isDark ? .dark : .light)
         .onAppear {
             playSound(sound: "fairytail", type: "mp3")
+            game.getUsers()
         }
         .onDisappear {
             audioPlayer?.stop()
