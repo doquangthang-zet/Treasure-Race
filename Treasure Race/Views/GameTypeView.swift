@@ -1,13 +1,19 @@
-//
-//  GameTypeView.swift
-//  Treasure Race
-//
-//  Created by Thang Do Quang on 26/08/2023.
-//
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2022B
+  Assessment: Assignment 2
+  Author: Do Quang Thang
+  ID: s3891873
+  Created  date: 25/08/2020
+  Last modified: 05/09/2023
+  Acknowledgement: None
+*/
 
 import SwiftUI
 
 struct GameTypeView: View {
+    //MARK: - PROPERTIES PART
     @EnvironmentObject var game: GameService
     @Environment(\.dismiss) var dismiss
     @State private var gameType: GameType = .undetermined
@@ -25,27 +31,37 @@ struct GameTypeView: View {
             LinearGradient(gradient: Gradient(colors: [Color("Color-orange"), Color("Color-red")]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all)
             
+            //MARK: - SELECT GAME TYPE PART
             VStack {
                 Picker("Select Game", selection: $gameType) {
-                    Text("Choose game type").tag(GameType.undetermined)
-                    Text("Play with machine").tag(GameType.bot)
-                    Text("Share your device").tag(GameType.single)
+                    Text("choose-game-type").tag(GameType.undetermined)
+                    Text("play-with-machine").tag(GameType.bot)
+                    Text("share-your-device").tag(GameType.single)
                 }
                 .modifier(ButtonMenuModifier())
                 
-                Text(gameType.description)
-                    .padding()
+                //MARK: - GAME TYPE DESCRIPTION
+                if gameType.description == "share-des" {
+                    Text("share-des")
+                        .padding()
+                } else if gameType.description == "machine-des" {
+                    Text("machine-des")
+                        .padding()
+                }
                 
                 VStack{
                     switch gameType {
+                    //MARK: - SINGLE PLAYER ELEMENTS
                     case .single:
+                        //MARK: - NAME FIELDS
                         VStack{
-                            TextField("Your name", text: $yourName)
+                            TextField("your-name", text: $yourName)
                                 .modifier(ShadowModifier())
-                            TextField("Opponent name", text: $opponentName)
+                            TextField("opponent-name", text: $opponentName)
                                 .modifier(ShadowModifier())
                             
-                            Text("Choose your avatar")
+                            //MARK: - AVATAR FIELDS
+                            Text("choose-your-character")
                             
                             HStack{
                                 Button {
@@ -97,7 +113,7 @@ struct GameTypeView: View {
                                 .disabled(opponentAvatar == "magician")
                             }
                             
-                            Text("Choose opponent avatar")
+                            Text("choose-opponent-character")
                             
                             HStack{
                                 Button {
@@ -149,11 +165,13 @@ struct GameTypeView: View {
                                 .disabled(yourAvatar == "magician")
                             }
                         }
+                        
+                    //MARK: - BOT ELEMENTS
                     case .bot:
-                        TextField("Your name", text: $yourName)
+                        TextField("your-name", text: $yourName)
                             .modifier(ShadowModifier())
                         
-                        Text("Choose your avatar")
+                        Text("choose-your-character")
                         
                         HStack{
                             Button {
@@ -201,6 +219,8 @@ struct GameTypeView: View {
                                 .opacity(yourAvatar == "magician" ? 0.5 : 1)
                             }
                         }
+                        
+                    //MARK: - NONE GAME TYPE
                     case .undetermined:
                         EmptyView()
                     }
@@ -209,29 +229,21 @@ struct GameTypeView: View {
                 .textFieldStyle(.roundedBorder)
                 .focused($focus)
                 .frame(width: 350)
-                
-//                Text("Choose Difficulty")
-//
-//                Picker("Select Game Level", selection: $level) {
-//                    Text("Easy").tag(GameLevel.easy)
-//                    Text("Medium").tag(GameLevel.medium)
-//                    Text("Hard").tag(GameLevel.hard)
-//                }
-//                .modifier(LevelButtonModifier())
-//
-//                Text(level.description)
-//                    .padding()
 
+                //MARK: - START BUTTON
                 Button(action: {
                     game.setupGame(gameType: gameType, player1Name: yourName, player2Name: opponentName, player1Avatar: yourAvatar, player2Avatar: opponentAvatar)
                     game.setupLevel(gameLevel: game.gameLevel)
+//                    game.reset()
                     focus = false
+                    game.progress = false
                     startGame = true
                     audioPlayer?.stop()
                 }, label: {
-                    Text("Start Game")
+                    Text("start-game")
                         .modifier(ButtonMenuModifier())
                 })
+                .modifier(LightShadowModifier())
                 .disabled(
                     gameType == .undetermined ||
                     gameType == .bot && (yourName.isEmpty || yourAvatar.isEmpty) ||
@@ -257,10 +269,6 @@ struct GameTypeView: View {
                 .foregroundColor(.white)
                 .padding(.top, 10)
                 .padding(.trailing, 10)
-                
-//                .onAppear(perform: {
-//                    playSound(sound: "drum-music", type: "mp3")
-//                }
             }
         }
         .inNavigationStack()

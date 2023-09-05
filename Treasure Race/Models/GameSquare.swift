@@ -1,12 +1,18 @@
-//
-//  GameSquare.swift
-//  tiktactoe
-//
-//  Created by Thang Do Quang on 26/08/2023.
-//
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2022B
+  Assessment: Assignment 2
+  Author: Do Quang Thang
+  ID: s3891873
+  Created  date: 25/08/2020
+  Last modified: 05/09/2023
+  Acknowledgement: None
+*/
 
 import SwiftUI
 
+//MARK: - GAME SQUARE MODEL
 struct GameSquare {
     var id: Int
     
@@ -14,6 +20,7 @@ struct GameSquare {
         return Image("frame_black")
     }
     
+    //MARK: - RESET SQUARE ON MAP
     static var reset: [GameSquare] {
         var squares = [GameSquare]()
         for index in 0...19 {

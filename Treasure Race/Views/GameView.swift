@@ -1,9 +1,14 @@
-//
-//  GameView.swift
-//  Treasure Race
-//
-//  Created by Thang Do Quang on 25/08/2023.
-//
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2022B
+  Assessment: Assignment 2
+  Author: Do Quang Thang
+  ID: s3891873
+  Created  date: 25/08/2020
+  Last modified: 05/09/2023
+  Acknowledgement: None
+*/
 
 import SwiftUI
 
@@ -28,9 +33,10 @@ struct GameView: View {
                 //MARK: - PLAYER TURN CHOOSING
                 VStack {
                     if[game.player1.isCurrent, game.player2.isCurrent].allSatisfy({ $0 == false }) {
-                        Text("Select a player to start")
+                        Text("choose-player-go-first")
                     }
                     HStack{
+                        //MARK: - BUTTON PLAYER NAME
                         Button(game.player1.name) {
                             game.player1.isCurrent = true
                             playSound(sound: "twink", type: "mp3")
@@ -44,6 +50,7 @@ struct GameView: View {
                                     await game.iphoneMove()
                                 }
                             }
+                            
                         }
                         .buttonStyle(PlayerBtnStyle(isCurrent: game.player2.isCurrent))
                     }
@@ -52,6 +59,7 @@ struct GameView: View {
                 
                 //MARK: - PLAYER-2 AREA
                 HStack{
+                    //MARK: - DICE
                     Button {
                         game.makeMove()
                         playSound(sound: "diceroll", type: "mp3")
@@ -78,12 +86,14 @@ struct GameView: View {
                     }
                     .disabled(game.player1.isCurrent) 
                     Spacer()
+                    
+                    //MARK: - PLAYER INFOR
                     VStack{
                         Text(game.player2.name)
                             .fontWeight(.heavy)
                             .font(.custom("Lilita One", size: 20))
                             .padding()
-                        Text("Score: \(game.player2.score)")
+                        Text("score: \(game.player2.score)")
                             .modifier(ScoreModifier())
                     }
                     game.player2.image
@@ -91,6 +101,7 @@ struct GameView: View {
                         .modifier(AvatarImageModifier())
                 }
                 
+                //MARK: - GAME MAP
                 ZStack {
                     switch game.gameLevel {
                     case .easy:
@@ -108,7 +119,7 @@ struct GameView: View {
                                         .modifier(ShadowModifier())
                                 }
                                 
-                                HStack{
+                                HStack (spacing: UIScreen.main.bounds.width > 500 ? UIScreen.main.bounds.width/10 : UIScreen.main.bounds.width/20){
                                     ForEach(0...5, id: \.self) { index in
                                         SquareView(index: index)
                                     }
@@ -117,21 +128,21 @@ struct GameView: View {
                             HStack{
                                 Spacer()
                                 SquareView(index: 6)
-                                    .padding(.trailing)
-                                    .padding(.trailing)
+//                                    .padding(.trailing)
+//                                    .padding(.trailing)
                             }
-                            HStack{
+                            HStack(spacing: UIScreen.main.bounds.width > 500 ? UIScreen.main.bounds.width/10 : UIScreen.main.bounds.width/20){
                                 ForEach(7...12, id: \.self) { index in
                                     SquareView(index: 19 - index)
                                 }
                             }
                             HStack{
                                 SquareView(index: 13)
-                                    .padding(.leading)
-                                    .padding(.leading)
+//                                    .padding(.leading)
+//                                    .padding(.leading)
                                 Spacer()
                             }
-                            HStack{
+                            HStack(spacing: UIScreen.main.bounds.width > 500 ? UIScreen.main.bounds.width/10 : UIScreen.main.bounds.width/20){
                                 ForEach(14...19, id: \.self) { index in
                                     SquareView(index: index)
                                 }
@@ -149,14 +160,16 @@ struct GameView: View {
                             }
                         }
                         .background(
-                            Image("bgmap")
-                                .resizable()
-                                .frame(width: 400, height: 300)
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(.white)
+                                .frame(minWidth: 380, idealWidth: 350, maxWidth: 1000, minHeight: 320, idealHeight: 450, maxHeight: 900, alignment: .center)
                         )
+                        .padding()
                         .disabled(true)
                         Spacer()
+                        
+                    //MARK: - GAME MAP - MEDIUM
                     case .medium:
-                        //MARK: - GAME MAP - MEDIUM
                         VStack{
                             HStack{
                                 VStack{
@@ -170,7 +183,7 @@ struct GameView: View {
                                         .modifier(ShadowModifier())
                                 }
                                 
-                                HStack{
+                                HStack(spacing: UIScreen.main.bounds.width > 500 ? UIScreen.main.bounds.width/10 : UIScreen.main.bounds.width/20){
                                     ForEach(0...5, id: \.self) { index in
                                         SquareView(index: index)
                                     }
@@ -179,21 +192,21 @@ struct GameView: View {
                             HStack{
                                 Spacer()
                                 SquareView(index: 6)
-                                    .padding(.trailing)
-                                    .padding(.trailing)
+//                                    .padding(.trailing)
+//                                    .padding(.trailing)
                             }
-                            HStack{
+                            HStack(spacing: UIScreen.main.bounds.width > 500 ? UIScreen.main.bounds.width/10 : UIScreen.main.bounds.width/20){
                                 ForEach(7...12, id: \.self) { index in
                                     SquareView(index: 19 - index)
                                 }
                             }
                             HStack{
                                 SquareView(index: 13)
-                                    .padding(.leading)
-                                    .padding(.leading)
+//                                    .padding(.leading)
+//                                    .padding(.leading)
                                 Spacer()
                             }
-                            HStack{
+                            HStack(spacing: UIScreen.main.bounds.width > 500 ? UIScreen.main.bounds.width/10 : UIScreen.main.bounds.width/20){
                                 ForEach(14...19, id: \.self) { index in
                                     SquareView(index: index)
                                 }
@@ -201,21 +214,21 @@ struct GameView: View {
                             HStack{
                                 Spacer()
                                 SquareView(index: 20)
-                                    .padding(.trailing)
-                                    .padding(.trailing)
+//                                    .padding(.trailing)
+//                                    .padding(.trailing)
                             }
-                            HStack{
+                            HStack(spacing: UIScreen.main.bounds.width > 500 ? UIScreen.main.bounds.width/10 : UIScreen.main.bounds.width/20){
                                 ForEach(21...26, id: \.self) { index in
                                     SquareView(index: 47 - index)
                                 }
                             }
                             HStack{
                                 SquareView(index: 27)
-                                    .padding(.leading)
-                                    .padding(.leading)
+//                                    .padding(.leading)
+//                                    .padding(.leading)
                                 Spacer()
                             }
-                            HStack{
+                            HStack(spacing: UIScreen.main.bounds.width > 500 ? UIScreen.main.bounds.width/10 : UIScreen.main.bounds.width/20){
                                 ForEach(28...33, id: \.self) { index in
                                     SquareView(index: index)
                                 }
@@ -235,13 +248,13 @@ struct GameView: View {
                         .background(
                             RoundedRectangle(cornerRadius: 10)
                                 .fill(.white)
-                                .frame(width: 350, height: 450)
+                                .frame(minWidth: 380, idealWidth: 350, maxWidth: 1000, minHeight: 320, idealHeight: 450, maxHeight: 800, alignment: .center)
                         )
                         .padding()
                         .disabled(true)
                         
+                    //MARK: - GAME MAP - HARD
                     case .hard:
-                        //MARK: - GAME MAP - HARD
                         VStack{
                             HStack{
                                 VStack{
@@ -255,7 +268,7 @@ struct GameView: View {
                                         .modifier(ShadowModifier())
                                 }
                                 
-                                HStack{
+                                HStack(spacing: UIScreen.main.bounds.width > 500 ? UIScreen.main.bounds.width/10 : UIScreen.main.bounds.width/20){
                                     ForEach(0...5, id: \.self) { index in
                                         SquareView(index: index)
                                     }
@@ -264,21 +277,21 @@ struct GameView: View {
                             HStack{
                                 Spacer()
                                 SquareView(index: 6)
-                                    .padding(.trailing)
-                                    .padding(.trailing)
+//                                    .padding(.trailing)
+//                                    .padding(.trailing)
                             }
-                            HStack{
+                            HStack(spacing: UIScreen.main.bounds.width > 500 ? UIScreen.main.bounds.width/10 : UIScreen.main.bounds.width/20){
                                 ForEach(7...12, id: \.self) { index in
                                     SquareView(index: 19 - index)
                                 }
                             }
                             HStack{
                                 SquareView(index: 13)
-                                    .padding(.leading)
-                                    .padding(.leading)
+//                                    .padding(.leading)
+//                                    .padding(.leading)
                                 Spacer()
                             }
-                            HStack{
+                            HStack(spacing: UIScreen.main.bounds.width > 500 ? UIScreen.main.bounds.width/10 : UIScreen.main.bounds.width/20){
                                 ForEach(14...19, id: \.self) { index in
                                     SquareView(index: index)
                                 }
@@ -286,21 +299,21 @@ struct GameView: View {
                             HStack{
                                 Spacer()
                                 SquareView(index: 20)
-                                    .padding(.trailing)
-                                    .padding(.trailing)
+//                                    .padding(.trailing)
+//                                    .padding(.trailing)
                             }
-                            HStack{
+                            HStack(spacing: UIScreen.main.bounds.width > 500 ? UIScreen.main.bounds.width/10 : UIScreen.main.bounds.width/20){
                                 ForEach(21...26, id: \.self) { index in
                                     SquareView(index: 47 - index)
                                 }
                             }
                             HStack{
                                 SquareView(index: 27)
-                                    .padding(.leading)
-                                    .padding(.leading)
+//                                    .padding(.leading)
+//                                    .padding(.leading)
                                 Spacer()
                             }
-                            HStack{
+                            HStack(spacing: UIScreen.main.bounds.width > 500 ? UIScreen.main.bounds.width/10 : UIScreen.main.bounds.width/20){
                                 ForEach(28...33, id: \.self) { index in
                                     SquareView(index: index)
                                 }
@@ -320,14 +333,16 @@ struct GameView: View {
                         .background(
                             RoundedRectangle(cornerRadius: 10)
                                 .fill(.white)
-                                .frame(width: 350, height: 450)
+                                .frame(minWidth: 380, idealWidth: 350, maxWidth: 1000, minHeight: 320, idealHeight: 450, maxHeight: 800, alignment: .center)
                         )
                         .padding()
                         .disabled(true)
                     }
                 }.focused($focus)
+                
                 //MARK: - PLAYER-1 AREA
                 HStack{
+                    //MARK: - PLAYER INFOR
                     game.player1.image
                         .resizable()
                         .modifier(AvatarImageModifier())
@@ -336,11 +351,13 @@ struct GameView: View {
                             .fontWeight(.heavy)
                             .font(.custom("Lilita One", size: 20))
                             .padding()
-                        Text("Score: \(game.player1.score)")
+                        Text("score: \(game.player1.score)")
                             .modifier(ScoreModifier())
                     }
                     
                     Spacer()
+                    
+                    //MARK: - DICE
                     Button {
                         game.makeMove()
                         playSound(sound: "diceroll", type: "mp3")
@@ -356,6 +373,7 @@ struct GameView: View {
                         } else {
                             playSound(sound: "jump", type: "mp3")
                         }
+                        print(game.showBadge)
                     } label: {
                         Image("dice\(game.player1.diceValue == 0 ? 1:game.player1.diceValue)")
                             .resizable()
@@ -374,10 +392,10 @@ struct GameView: View {
                     Color("Color-black-transparent")
                         .edgesIgnoringSafeArea(.all)
                     VStack{
-                        Text("GAME OVER")
+                        Text("game-over")
                             .font(.system(.title, design: .rounded))
                             .fontWeight(.heavy)
-                            .foregroundColor(Color.white)
+                            .foregroundColor(Color("Color-purple"))
                             .padding()
                             .frame(minWidth: 280, idealWidth: 280, maxWidth: 320)
                             .background(Color("Color-red"))
@@ -389,15 +407,25 @@ struct GameView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(maxHeight: 150)
-                            Text("The winner is\n\(game.player1.isWinner ? game.player1.name : game.player2.name)\n See you again!")
+                            Text("winner")
                                 .font(.system(.body, design: .rounded))
                                 .foregroundColor(Color.white)
                                 .multilineTextAlignment(.center)
+                            Text("\(game.player1.isWinner ? game.player1.name : game.player2.name)")
+                                .font(.system(.body, design: .rounded))
+                                .foregroundColor(Color.white)
+                                .multilineTextAlignment(.center)
+                            Text("see-you")
+                                .font(.system(.body, design: .rounded))
+                                .foregroundColor(Color.white)
+                                .multilineTextAlignment(.center)
+                            
+                            //MARK: - NEW GAME BUTTON
                             Button {
                                 game.reset()
                                 audioPlayer?.stop()
                             } label: {
-                                Text("New Game".uppercased())
+                                Text("new-game")
                                     .foregroundColor(Color(.white))
                                     .fontWeight(.medium)
                             }
@@ -409,6 +437,26 @@ struct GameView: View {
                                     .foregroundColor(Color("Color-red"))
                             )
                             
+                            //MARK: - NEXT LEVEL BUTTON
+                            if game.gameLevel != .hard {
+                                Button {
+                                    game.reset()
+                                    
+                                    game.setupLevel(gameLevel: game.gameLevel == .easy ? .medium : .hard)
+                                    audioPlayer?.stop()
+                                } label: {
+                                    Text("next-level")
+                                        .foregroundColor(Color(.white))
+                                        .fontWeight(.medium)
+                                }
+                                .padding(.vertical,10)
+                                .padding(.horizontal, 20)
+                                .background(
+                                    Capsule()
+                                        .strokeBorder(lineWidth: 2)
+                                        .foregroundColor(Color("Color-red"))
+                                )
+                            }
                         }
                         Spacer()
                     }
@@ -421,11 +469,15 @@ struct GameView: View {
             }
                 
         }//Close zstack
+//        .alert("You get starter badge", isPresented: $game.showBadge) {
+//            Button("OK", role: .cancel) {game.showBadge = false}
+//        }
         .environment(\.colorScheme, game.isDark ? .dark : .light)
+        
+        //MARK: - GAME EXIT BUTTON
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
-//                    audioPlayer?.stop()
                     dismiss()
                     playSound(sound: "fairytail", type: "mp3")
                 }) {
@@ -437,10 +489,41 @@ struct GameView: View {
                 .padding(.trailing, 10)
             }
         }
+        //MARK: - GAME SAVING BUTTON
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    game.saveProgress()
+                    playSound(sound: "bonus", type: "mp3")
+                }) {
+                    Image(systemName: "square.and.arrow.down")
+                        .font(.title)
+                }
+                .foregroundColor(.white)
+                .padding(.top, 10)
+                .padding(.trailing, 10)
+            }
+        }
+        //MARK: - GAME RESET BUTTON
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    game.reset()
+                    playSound(sound: "twink", type: "mp3")
+                }) {
+                    Image(systemName: "arrow.2.circlepath.circle")
+                        .font(.title)
+                }
+                .foregroundColor(.white)
+                .padding(.top, 10)
+                .padding(.trailing, 10)
+            }
+        }
         .inNavigationStack()
     }
 }
 
+//MARK: - GAME PREVIEW
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
         GameView()

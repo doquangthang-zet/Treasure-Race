@@ -1,0 +1,57 @@
+/* 
+  Localizable.strings
+  Treasure Race
+
+  Created by Thang Do Quang on 31/08/2023.
+  
+*/
+"continue" = "Tiếp tục";
+"start-button" = "Bắt Đầu";
+"leader-board" = "Xếp Hạng";
+"how-to-play" = "Cách Chơi";
+"settings" = "Cài Đặt";
+"choose-game-type" = "Chọn hình thức";
+"play-with-machine" = "Đấu với máy";
+"machine-des" = "Chơi với máy Iphone";
+"share-des" = "Chia sẻ Iphone với bạn bè";
+"share-your-device" = "Đấu với bạn";
+"choose-your-character" = "Chọn Nhân Vật";
+"choose-opponent-character" = "Chọn Nhân Vật";
+"your-name" = "Tên bạn";
+"opponent-name" = "Tên đối thủ";
+"start-game" = "Vào game";
+"choose-player-go-first" = "Chọn người chơi bắt đầu";
+"score" = "Điểm";
+"game-over" ="KẾT THÚC";
+"winnner %@" = "Người thắng là %@";
+"see-you" = "Hẹn gặp lại!";
+"new-game" = "Chơi mới";
+"next-level" = "Vòng sau";
+"choose-difficulty" = "Chọn Độ Khó";
+"easy" = "Dễ";
+"medium" = "Trung Bình";
+"hard" = "Khó";
+"easy-des" = "Bản đồ ngắn và ít chướng ngoại vật";
+"medium-des" = "Đường dài hơn";
+"hard-des" = "Đường dài hơn và nhiều chướng ngại";
+"choose-language" = "Chọn Ngôn Ngữ";
+"change-theme" = "Đổi giao diện";
+"light" = "Sáng";
+"dark" = "Tối";
+"way-to-play-1" = "\tĐây là một trò chơi xúc xắc đơn giản, trong đó hai người chơi cố gắng chạy nhanh hơn nhau để đến được kho báu trước.\n\tĐể bắt đầu trò chơi, người chơi cần nhập tên của mình, chọn hình đại diện và chọn loại trò chơi. Trò chơi hỗ trợ 2 loại trò chơi khác nhau, trong đó người chơi có thể đấu với máy tính hoặc chia sẻ thiết bị với người chơi khác.";
+"way-to-play-2" = "Dưới đây là giao diện chính của trò chơi:";
+"way-to-play-3" = "\tĐầu tiên, người dùng cần quyết định xem ai đi trước bằng cách chọn một trong các hai nút có tên người chơi ở đầu màn hình.";
+"way-to-play-4" = "\tDưới đây chúng ta có thể thấy các thanh trạng thái của người chơi 1 và 2 như sau:";
+"way-to-play-5" = "\tThanh trạng thái bao gồm tên, hình đại diện, điểm số và xúc xắc của mỗi người chơi. Khi đến lượt của mình, người chơi sẽ bấm vào biểu tượng xúc xắc để tung, kết quả trả về tương ứng với số bước mà người chơi sẽ thực hiện.";
+"way-to-play-6" = "\tKhu vực này hiển thị bản đồ kho báu và các cột mốc, trong đó ô vuông đầu tiên là điểm bắt đầu.";
+"way-to-play-7" = "\tKhi người chơi chưa vào ô xuất phát, người chơi cần tung xúc xắc có kết quả là 1 hoặc 6 để tiến về ô xuất phát. Khi tiến vào ô xuất phát, người chơi có thể nhận 100 điểm và huuy chương Beginner. Sau đó, người chơi sẽ có một lượt khác.\nTrò chơi kết thúc khi một trong hai người chơi đạt đến điểm cuối cùng với biểu tượng kho báu. Khi chạm tới kho báu người chơi nhận huy chương Winner và 100 điểm";
+"way-to-play-8" = "\tTrên đường đi, có một số chướng ngại vật mà người chơi phải chú ý:";
+"way-to-play-9" = "1. Bomb:";
+"way-to-play-10" = "Khi vào biểu tượng này người chơi sẽ bị giết và đuổi khỏi đường đua.";
+"way-to-play-11" = "2. Cổng dịch chuyển: ";
+"way-to-play-12" = "Với biểu tượng cổng thông tin, người chơi sẽ được chuyển sang ô khác có biểu tượng giống vậy.";
+"way-to-play-13" = "3. Cộng 3 bước:";
+"way-to-play-14" = "Biểu tượng 'cộng 3' cho phép người chơi tiến lên 3 ô.";
+"way-to-play-15" = "4. Trừ 2 bước:";
+"way-to-play-16" = "Biểu tượng 'trừ 2' khiến người chơi lùi lại 2 ô.";
+"way-to-play-17" = "\tNgoài ra, trò chơi cho phép người chơi vượt qua đối thủ, tuy nhiên, nếu người chơi gặp đối thủ của họ trên cùng một ô vuông, họ có thể đuổi chúng ra khỏi đường đua. Khi bạn đá người chơi khác bạn nhận 100 điểm và huân chương Kicker";

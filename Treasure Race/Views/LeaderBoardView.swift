@@ -1,9 +1,14 @@
-//
-//  LeaderBoardView.swift
-//  Treasure Race
-//
-//  Created by Thang Do Quang on 27/08/2023.
-//
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2022B
+  Assessment: Assignment 2
+  Author: Do Quang Thang
+  ID: s3891873
+  Created  date: 25/08/2020
+  Last modified: 05/09/2023
+  Acknowledgement: None
+*/
 
 import SwiftUI
 
@@ -19,10 +24,20 @@ struct LeaderBoardView: View {
                 .edgesIgnoringSafeArea(.all)
             
             List{
+                HStack{
+                    Spacer()
+                    Text("leader-board")
+                        .font(game.language == "vi" ? .largeTitle : .custom("LilitaOne", size: 40))
+                        .foregroundColor(Color("Color-purple"))
+                    Spacer()
+                }
+                
                 ForEach(game.users) { user in
                     ListRowView(u: user)
                 }
             }
+            .background(LinearGradient(gradient: Gradient(colors: [Color("Color-orange"), Color("Color-red")]), startPoint: .top, endPoint: .bottom))
+            .scrollContentBackground(.hidden)
         }
         .environment(\.colorScheme, game.isDark ? .dark : .light)
         .toolbar {
@@ -37,10 +52,6 @@ struct LeaderBoardView: View {
                 .foregroundColor(.white)
                 .padding(.top, 10)
                 .padding(.trailing, 10)
-                
-//                .onAppear(perform: {
-//                    playSound(sound: "drum-music", type: "mp3")
-//                }
             }
         }
         .inNavigationStack()

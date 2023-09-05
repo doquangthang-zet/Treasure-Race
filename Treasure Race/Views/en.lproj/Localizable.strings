@@ -1,0 +1,57 @@
+/* 
+  Localizable.strings
+  Treasure Race
+
+  Created by Thang Do Quang on 31/08/2023.
+  
+*/
+"continue" = "Continue";
+"start-button" = "New Game";
+"leader-board" = "Leaderboard";
+"how-to-play" = "How To Play";
+"settings" = "Settings";
+"choose-game-type" = "Choose Game Type";
+"play-with-machine" = "Play With Machine";
+"machine-des" = "Play with your Iphone";
+"share-des" = "Share your Iphone with friend";
+"share-your-device" = "Share Your Device";
+"choose-your-character" = "Choose Your Character";
+"choose-opponent-character" = "Choose Opponent Avatar";
+"your-name" = "Your name";
+"opponent-name" = "Opponent name";
+"start-game" = "Start Game";
+"choose-player-go-first" = "Choose player go first";
+"score" = "Score";
+"game-over" ="GAME OVER";
+"winnner %@" = "The winner is %@";
+"see-you" = "See you later!";
+"new-game" = "New game";
+"next-level" = "Next level";
+"choose-difficulty" = "Choose difficulty";
+"easy" = "Easy";
+"medium" = "Medium";
+"hard" = "Hard";
+"easy-des" = "The road is short and a little obstacles";
+"medium-des" = "Longer road";
+"hard-des" = "Longer road and more obstacles";
+"choose-language" = "Choose Language";
+"change-theme" = "Change Theme";
+"light" = "Light";
+"dark" = "Dark";
+"way-to-play-1" = "\tThis is a simple dice game in which two players try to outrun each other to reach the treasure first.\n\tTo start the game, players need to enter their name, select an avatar and select the game type. The game supports 2 different game types, in which players can play against the computer or share the device with another player.";
+"way-to-play-2" = "Below is the main interface of the game:";
+"way-to-play-3" = "\tFirst, the user needs to decide who goes first by choosing one of the two buttons with the player's name at the top of the screen.";
+"way-to-play-4" = "\tBelow we can see the status bars of players 1 and 2 as follows:";
+"way-to-play-5" = "\tThe status bar includes each player's name, avatar, score and dice. When it's their turn, the player will click on the dice icon to roll, the results returned corresponding to the number of steps that the player will make.";
+"way-to-play-6" = "\tBelow area shows treasure maps and milestones, where the first square is the starting point.";
+"way-to-play-7" = "\tWhen the player has not entered the starting square, they need to roll the dice with a result of 1 or 6 to advance to the starting square. When enter the start square, player get the Begginer medal and 100 point. After that, the player will be given another turn.\nThe game ends when one of the two players reaches the final point with the treasure icon. At this time, the winner get the Winner medal and 100 points";
+"way-to-play-8" = "\tAlong the way, there are a few obstacles that players must pay attention to:";
+"way-to-play-9" = "1. Bomb:";
+"way-to-play-10" = "When entering this icon, the player will be killed and kicked out of the track.";
+"way-to-play-11" = "2. Portal: ";
+"way-to-play-12" = "With the portal icon, the player will be moved to a different cell with the same icon.";
+"way-to-play-13" = "3. Three Plus:";
+"way-to-play-14" = "The 'plus 3' icon allows the player to advance 3 cells.";
+"way-to-play-15" = "4. Two Minus:";
+"way-to-play-16" = "The 'minus 2' icon makes the player move 2 cells back.";
+"way-to-play-17" = "\tAdditionally, the game allows players to overtake their opponents, however, if a player encounters their opponent on the same square, they can kick them off the track. When you kick another player you can get 100 score and get the kicker(second) medal";

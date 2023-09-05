@@ -1,42 +1,49 @@
-//
-//  GameModels.swift
-//  tiktactoe
-//
-//  Created by Thang Do Quang on 26/08/2023.
-//
-
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2022B
+  Assessment: Assignment 2
+  Author: Do Quang Thang
+  ID: s3891873
+  Created  date: 25/08/2020
+  Last modified: 05/09/2023
+  Acknowledgement: None
+*/
 import SwiftUI
 
-enum GameType {
+//MARK: - GAME TYPE MODEL
+enum GameType: String, Codable, CaseIterable {
     case single, bot, undetermined
     
     var description: String {
         switch self {
         case .single:
-            return "Share your iphone with your friend";
+            return "share-des";
         case .bot:
-            return "Play with your iphone";
+            return "machine-des";
         case .undetermined:
             return ""
         }
     }
 }
 
-enum GameLevel {
+//MARK: - GAME LEVEL MODEL
+enum GameLevel: String, Codable, CaseIterable {
     case easy, medium, hard
     
     var description: String {
         switch self {
         case .easy:
-            return "The road is short and a little obstacles";
+            return "easy-des";
         case .medium:
-            return "Longer road";
+            return "medium-des";
         case .hard:
-            return "Longer road and more obstacles"
+            return "hard-des"
         }
     }
 }
 
+//MARK: - PLAYER MODEL
 struct Player: Identifiable, Codable {
     let id: String
     var avatar: String
@@ -59,11 +66,11 @@ struct Player: Identifiable, Codable {
         Dice.current = Int.random(in: 1...6)
     }
     
-    func kick(p: Player) {
-        var player = p
-        player.position = -1
-        player.onRoad = false
-    }
+//    func kick(p: Player) {
+//        var player = p
+//        player.position = -1
+//        player.onRoad = false
+//    }
     init(id: String = UUID().uuidString, avatar: String, name: String) {
         self.id = id
         self.avatar = avatar
@@ -71,12 +78,14 @@ struct Player: Identifiable, Codable {
     }
 }
 
+//MARK: - DICE MODEL
 enum Dice{
     static var all = [1,2,3,4,5,6]
     
     static var current = 0
 }
 
+//MARK: - NODE MODEL
 enum Move{
     static var winningMove = 19
     static var winningMoveMedium = 33

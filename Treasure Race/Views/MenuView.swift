@@ -1,19 +1,27 @@
-//
-//  MenuView.swift
-//  Treasure Race
-//
-//  Created by Thang Do Quang on 25/08/2023.
-//
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2022B
+  Assessment: Assignment 2
+  Author: Do Quang Thang
+  ID: s3891873
+  Created  date: 25/08/2020
+  Last modified: 05/09/2023
+  Acknowledgement: None
+*/
 
 import SwiftUI
 
 struct MenuView: View {
+    //MARK: - PROPERTIES
     @EnvironmentObject var game: GameService
+    @State private var continue_status: Bool = false
     @State private var start: Bool = false
     @State private var leaderBoard: Bool = false
     @State private var howToPlay: Bool = false
     @State private var setting: Bool = false
     
+    //MARK: - BODY
     var body: some View {
         ZStack{
             // MARK: - BACKGROUND
@@ -21,14 +29,29 @@ struct MenuView: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack{
+                Spacer()
                 // MARK: - LOGO HEADER
                 LogoView(logoFileName: "logo2")
                 
+                //MARK: - CONTINUE BUTTON
                 Spacer()
+                if game.progress {
+                    Button {
+                        game.restore()
+                        continue_status = true
+                        audioPlayer?.stop()
+                    } label: {
+                        Text("continue")
+                            .modifier(ButtonMenuModifier())
+                    }
+                    .modifier(LightShadowModifier())
+                }
+                
+                //MARK: - OTHER BUTTONS
                 Button {
                     start = true
                 } label: {
-                    Text("start")
+                    Text("start-button")
                         .modifier(ButtonMenuModifier())
                 }
                 .modifier(LightShadowModifier())
@@ -36,17 +59,19 @@ struct MenuView: View {
                 Button {
                     leaderBoard = true
                 } label: {
-                    Text("leader_board")
+                    Text("leader-board")
                         .modifier(ButtonMenuModifier())
                 }
                 .modifier(LightShadowModifier())
+                
                 Button {
                     howToPlay = true
                 } label: {
-                    Text("how_to_play")
+                    Text("how-to-play")
                         .modifier(ButtonMenuModifier())
                 }
                 .modifier(LightShadowModifier())
+                
                 Button {
                     setting = true
                 } label: {
@@ -62,6 +87,9 @@ struct MenuView: View {
         .onAppear {
             playSound(sound: "fairytail", type: "mp3")
         }
+        .onDisappear {
+            audioPlayer?.stop()
+        }
         .fullScreenCover(isPresented: $start){
             GameTypeView()
                 .environment(\.locale, Locale.init(identifier: game.language))
@@ -76,6 +104,10 @@ struct MenuView: View {
         }
         .fullScreenCover(isPresented: $setting){
             SettingView()
+                .environment(\.locale, Locale.init(identifier: game.language))
+        }
+        .fullScreenCover(isPresented: $continue_status){
+            GameView()
                 .environment(\.locale, Locale.init(identifier: game.language))
         }
         .inNavigationStack()
